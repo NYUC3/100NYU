@@ -36,7 +36,7 @@ const router = new Router(on => {
     const query = `/graphql?query={content(path:"${state.path}"){path,title,content,component}}`;
     const response = await fetch(query);
     const { data } = await response.json();
-    return data && data.content && <ContentPage {...data.content} />;
+    return data && data.content && <ContentPage className="ContentPage" {...data.content} />;
   });
 
   on('error', (state, error) => state.statusCode === 404 ?
