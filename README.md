@@ -11,7 +11,7 @@ Starting
 First install the node dependencies
 
 ``` 
-    node install
+    npm install
 ```
 
 
