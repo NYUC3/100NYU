@@ -1,0 +1,3 @@
+[submodule "100NYU_design"]
+	path = 100NYU_design
+	url = https://github.com/jckhang/100NYU_design

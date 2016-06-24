@@ -1713,9 +1713,7 @@ module.exports =
           'div',
           null,
           _react2.default.createElement(_Header2.default, null),
-          this.props.children,
-          _react2.default.createElement(_Feedback2.default, null),
-          _react2.default.createElement(_Footer2.default, null)
+          this.props.children
         ) : this.props.children;
       }
     }]);
@@ -2127,21 +2125,7 @@ module.exports =
           _react2.default.createElement(
             'span',
             { className: _Header2.default.brandTxt },
-            'Your Company'
-          )
-        ),
-        _react2.default.createElement(
-          'div',
-          { className: _Header2.default.banner },
-          _react2.default.createElement(
-            'h1',
-            { className: _Header2.default.bannerTitle },
-            'React'
-          ),
-          _react2.default.createElement(
-            'p',
-            { className: _Header2.default.bannerDesc },
-            'Complex web apps made easy'
+            '100 NYU'
           )
         )
       )
@@ -2195,21 +2179,6 @@ module.exports =
     return _react2.default.createElement(
       'div',
       { className: (0, _classnames2.default)(_Navigation2.default.root, className), role: 'navigation' },
-      _react2.default.createElement(
-        _Link2.default,
-        { className: _Navigation2.default.link, to: '/about' },
-        'About'
-      ),
-      _react2.default.createElement(
-        _Link2.default,
-        { className: _Navigation2.default.link, to: '/contact' },
-        'Contact'
-      ),
-      _react2.default.createElement(
-        'span',
-        { className: _Navigation2.default.spacer },
-        ' | '
-      ),
       _react2.default.createElement(
         _Link2.default,
         { className: _Navigation2.default.link, to: '/login' },
@@ -3515,30 +3484,7 @@ module.exports =
       _react2.default.createElement(
         'div',
         { className: _Home2.default.container },
-        _react2.default.createElement(
-          'h1',
-          { className: _Home2.default.title },
-          'React.js News'
-        ),
-        _react2.default.createElement(
-          'ul',
-          { className: _Home2.default.news },
-          news.map(function (item, index) {
-            return _react2.default.createElement(
-              'li',
-              { key: index, className: _Home2.default.newsItem },
-              _react2.default.createElement(
-                'a',
-                { href: item.link, className: _Home2.default.newsTitle },
-                item.title
-              ),
-              _react2.default.createElement('span', {
-                className: _Home2.default.newsDesc,
-                dangerouslySetInnerHTML: { __html: item.contentSnippet }
-              })
-            );
-          })
-        )
+        _react2.default.createElement('ul', { className: _Home2.default.news })
       )
     );
   } /**
@@ -3622,7 +3568,7 @@ module.exports =
               _ref = _context.sent;
               data = _ref.data;
   
-              state.context.onSetTitle('React.js Starter Kit');
+              state.context.onSetTitle('100NYU');
               return _context.abrupt('return', _react2.default.createElement(_Home2.default, { news: data.news }));
   
             case 9:
@@ -5306,26 +5252,26 @@ module.exports =
   var jade = __webpack_require__(21);
   
   module.exports = function template(locals) {
-  var jade_debug = [ new jade.DebugItem( 1, "/Users/zhangyuxiang/Projects/work/side_project/100nyu/app-web/src/views/error.jade" ) ];
+  var jade_debug = [ new jade.DebugItem( 1, "/Users/zhangyuxiang/Projects/work/side_project/100nyu/100NYU_app/src/views/error.jade" ) ];
   try {
   var buf = [];
   var jade_mixins = {};
   var jade_interp;
   ;var locals_for_with = (locals || {});(function (stack) {
-  jade_debug.unshift(new jade.DebugItem( 0, "/Users/zhangyuxiang/Projects/work/side_project/100nyu/app-web/src/views/error.jade" ));
-  jade_debug.unshift(new jade.DebugItem( 1, "/Users/zhangyuxiang/Projects/work/side_project/100nyu/app-web/src/views/error.jade" ));
+  jade_debug.unshift(new jade.DebugItem( 0, "/Users/zhangyuxiang/Projects/work/side_project/100nyu/100NYU_app/src/views/error.jade" ));
+  jade_debug.unshift(new jade.DebugItem( 1, "/Users/zhangyuxiang/Projects/work/side_project/100nyu/100NYU_app/src/views/error.jade" ));
   buf.push("<!DOCTYPE html>");
   jade_debug.shift();
-  jade_debug.unshift(new jade.DebugItem( 2, "/Users/zhangyuxiang/Projects/work/side_project/100nyu/app-web/src/views/error.jade" ));
+  jade_debug.unshift(new jade.DebugItem( 2, "/Users/zhangyuxiang/Projects/work/side_project/100nyu/100NYU_app/src/views/error.jade" ));
   buf.push("<html lang=\"en\">");
   jade_debug.unshift(new jade.DebugItem( undefined, jade_debug[0].filename ));
-  jade_debug.unshift(new jade.DebugItem( 3, "/Users/zhangyuxiang/Projects/work/side_project/100nyu/app-web/src/views/error.jade" ));
+  jade_debug.unshift(new jade.DebugItem( 3, "/Users/zhangyuxiang/Projects/work/side_project/100nyu/100NYU_app/src/views/error.jade" ));
   buf.push("<head>");
   jade_debug.unshift(new jade.DebugItem( undefined, jade_debug[0].filename ));
-  jade_debug.unshift(new jade.DebugItem( 4, "/Users/zhangyuxiang/Projects/work/side_project/100nyu/app-web/src/views/error.jade" ));
+  jade_debug.unshift(new jade.DebugItem( 4, "/Users/zhangyuxiang/Projects/work/side_project/100nyu/100NYU_app/src/views/error.jade" ));
   buf.push("<meta charset=\"utf-8\">");
   jade_debug.shift();
-  jade_debug.unshift(new jade.DebugItem( 5, "/Users/zhangyuxiang/Projects/work/side_project/100nyu/app-web/src/views/error.jade" ));
+  jade_debug.unshift(new jade.DebugItem( 5, "/Users/zhangyuxiang/Projects/work/side_project/100nyu/100NYU_app/src/views/error.jade" ));
   buf.push("<title>");
   jade_debug.unshift(new jade.DebugItem( undefined, jade_debug[0].filename ));
   jade_debug.unshift(new jade.DebugItem( 5, jade_debug[0].filename ));
@@ -5334,10 +5280,10 @@ module.exports =
   jade_debug.shift();
   buf.push("</title>");
   jade_debug.shift();
-  jade_debug.unshift(new jade.DebugItem( 6, "/Users/zhangyuxiang/Projects/work/side_project/100nyu/app-web/src/views/error.jade" ));
+  jade_debug.unshift(new jade.DebugItem( 6, "/Users/zhangyuxiang/Projects/work/side_project/100nyu/100NYU_app/src/views/error.jade" ));
   buf.push("<meta name=\"viewport\" content=\"width=device-width, initial-scale=1\">");
   jade_debug.shift();
-  jade_debug.unshift(new jade.DebugItem( 7, "/Users/zhangyuxiang/Projects/work/side_project/100nyu/app-web/src/views/error.jade" ));
+  jade_debug.unshift(new jade.DebugItem( 7, "/Users/zhangyuxiang/Projects/work/side_project/100nyu/100NYU_app/src/views/error.jade" ));
   buf.push("<style>");
   jade_debug.unshift(new jade.DebugItem( 58, jade_debug[0].filename ));
   jade_debug.unshift(new jade.DebugItem( 58, jade_debug[0].filename ));
@@ -5545,10 +5491,10 @@ module.exports =
   jade_debug.shift();
   buf.push("</head>");
   jade_debug.shift();
-  jade_debug.unshift(new jade.DebugItem( 59, "/Users/zhangyuxiang/Projects/work/side_project/100nyu/app-web/src/views/error.jade" ));
+  jade_debug.unshift(new jade.DebugItem( 59, "/Users/zhangyuxiang/Projects/work/side_project/100nyu/100NYU_app/src/views/error.jade" ));
   buf.push("<body>");
   jade_debug.unshift(new jade.DebugItem( undefined, jade_debug[0].filename ));
-  jade_debug.unshift(new jade.DebugItem( 60, "/Users/zhangyuxiang/Projects/work/side_project/100nyu/app-web/src/views/error.jade" ));
+  jade_debug.unshift(new jade.DebugItem( 60, "/Users/zhangyuxiang/Projects/work/side_project/100nyu/100NYU_app/src/views/error.jade" ));
   buf.push("<h1>");
   jade_debug.unshift(new jade.DebugItem( undefined, jade_debug[0].filename ));
   jade_debug.unshift(new jade.DebugItem( 60, jade_debug[0].filename ));
@@ -5557,7 +5503,7 @@ module.exports =
   jade_debug.shift();
   buf.push("</h1>");
   jade_debug.shift();
-  jade_debug.unshift(new jade.DebugItem( 61, "/Users/zhangyuxiang/Projects/work/side_project/100nyu/app-web/src/views/error.jade" ));
+  jade_debug.unshift(new jade.DebugItem( 61, "/Users/zhangyuxiang/Projects/work/side_project/100nyu/100NYU_app/src/views/error.jade" ));
   buf.push("<p>");
   jade_debug.unshift(new jade.DebugItem( undefined, jade_debug[0].filename ));
   jade_debug.unshift(new jade.DebugItem( 61, jade_debug[0].filename ));
@@ -5566,7 +5512,7 @@ module.exports =
   jade_debug.shift();
   buf.push("</p>");
   jade_debug.shift();
-  jade_debug.unshift(new jade.DebugItem( 62, "/Users/zhangyuxiang/Projects/work/side_project/100nyu/app-web/src/views/error.jade" ));
+  jade_debug.unshift(new jade.DebugItem( 62, "/Users/zhangyuxiang/Projects/work/side_project/100nyu/100NYU_app/src/views/error.jade" ));
   buf.push("<pre>" + (jade.escape(null == (jade_interp = stack) ? "" : jade_interp)));
   jade_debug.unshift(new jade.DebugItem( undefined, jade_debug[0].filename ));
   jade_debug.shift();
@@ -5578,7 +5524,7 @@ module.exports =
   jade_debug.shift();
   buf.push("</html>");
   jade_debug.shift();
-  jade_debug.unshift(new jade.DebugItem( 63, "/Users/zhangyuxiang/Projects/work/side_project/100nyu/app-web/src/views/error.jade" ));
+  jade_debug.unshift(new jade.DebugItem( 63, "/Users/zhangyuxiang/Projects/work/side_project/100nyu/100NYU_app/src/views/error.jade" ));
   buf.push("<!-- IE needs 512+ bytes: http://blogs.msdn.com/b/ieinternals/archive/2010/08/19/http-error-pages-in-internet-explorer.aspx-->");
   jade_debug.shift();
   jade_debug.shift();}.call(this,"stack" in locals_for_with?locals_for_with.stack:typeof stack!=="undefined"?stack:undefined));;return buf.join("");
@@ -5594,44 +5540,44 @@ module.exports =
   var jade = __webpack_require__(21);
   
   module.exports = function template(locals) {
-  var jade_debug = [ new jade.DebugItem( 1, "/Users/zhangyuxiang/Projects/work/side_project/100nyu/app-web/src/views/index.jade" ) ];
+  var jade_debug = [ new jade.DebugItem( 1, "/Users/zhangyuxiang/Projects/work/side_project/100nyu/100NYU_app/src/views/index.jade" ) ];
   try {
   var buf = [];
   var jade_mixins = {};
   var jade_interp;
   ;var locals_for_with = (locals || {});(function (body, css, description, entry, title, trackingId) {
-  jade_debug.unshift(new jade.DebugItem( 0, "/Users/zhangyuxiang/Projects/work/side_project/100nyu/app-web/src/views/index.jade" ));
-  jade_debug.unshift(new jade.DebugItem( 1, "/Users/zhangyuxiang/Projects/work/side_project/100nyu/app-web/src/views/index.jade" ));
+  jade_debug.unshift(new jade.DebugItem( 0, "/Users/zhangyuxiang/Projects/work/side_project/100nyu/100NYU_app/src/views/index.jade" ));
+  jade_debug.unshift(new jade.DebugItem( 1, "/Users/zhangyuxiang/Projects/work/side_project/100nyu/100NYU_app/src/views/index.jade" ));
   buf.push("<!DOCTYPE html>");
   jade_debug.shift();
-  jade_debug.unshift(new jade.DebugItem( 2, "/Users/zhangyuxiang/Projects/work/side_project/100nyu/app-web/src/views/index.jade" ));
+  jade_debug.unshift(new jade.DebugItem( 2, "/Users/zhangyuxiang/Projects/work/side_project/100nyu/100NYU_app/src/views/index.jade" ));
   buf.push("<html lang=\"\" class=\"no-js\">");
   jade_debug.unshift(new jade.DebugItem( undefined, jade_debug[0].filename ));
-  jade_debug.unshift(new jade.DebugItem( 3, "/Users/zhangyuxiang/Projects/work/side_project/100nyu/app-web/src/views/index.jade" ));
+  jade_debug.unshift(new jade.DebugItem( 3, "/Users/zhangyuxiang/Projects/work/side_project/100nyu/100NYU_app/src/views/index.jade" ));
   buf.push("<head>");
   jade_debug.unshift(new jade.DebugItem( undefined, jade_debug[0].filename ));
-  jade_debug.unshift(new jade.DebugItem( 4, "/Users/zhangyuxiang/Projects/work/side_project/100nyu/app-web/src/views/index.jade" ));
+  jade_debug.unshift(new jade.DebugItem( 4, "/Users/zhangyuxiang/Projects/work/side_project/100nyu/100NYU_app/src/views/index.jade" ));
   buf.push("<meta charset=\"utf-8\">");
   jade_debug.shift();
-  jade_debug.unshift(new jade.DebugItem( 5, "/Users/zhangyuxiang/Projects/work/side_project/100nyu/app-web/src/views/index.jade" ));
+  jade_debug.unshift(new jade.DebugItem( 5, "/Users/zhangyuxiang/Projects/work/side_project/100nyu/100NYU_app/src/views/index.jade" ));
   buf.push("<meta http-equiv=\"x-ua-compatible\" content=\"ie=edge\">");
   jade_debug.shift();
-  jade_debug.unshift(new jade.DebugItem( 6, "/Users/zhangyuxiang/Projects/work/side_project/100nyu/app-web/src/views/index.jade" ));
+  jade_debug.unshift(new jade.DebugItem( 6, "/Users/zhangyuxiang/Projects/work/side_project/100nyu/100NYU_app/src/views/index.jade" ));
   buf.push("<title>" + (jade.escape(null == (jade_interp = title) ? "" : jade_interp)));
   jade_debug.unshift(new jade.DebugItem( undefined, jade_debug[0].filename ));
   jade_debug.shift();
   buf.push("</title>");
   jade_debug.shift();
-  jade_debug.unshift(new jade.DebugItem( 7, "/Users/zhangyuxiang/Projects/work/side_project/100nyu/app-web/src/views/index.jade" ));
+  jade_debug.unshift(new jade.DebugItem( 7, "/Users/zhangyuxiang/Projects/work/side_project/100nyu/100NYU_app/src/views/index.jade" ));
   buf.push("<meta name=\"description\"" + (jade.attr("description", description, true, true)) + ">");
   jade_debug.shift();
-  jade_debug.unshift(new jade.DebugItem( 8, "/Users/zhangyuxiang/Projects/work/side_project/100nyu/app-web/src/views/index.jade" ));
+  jade_debug.unshift(new jade.DebugItem( 8, "/Users/zhangyuxiang/Projects/work/side_project/100nyu/100NYU_app/src/views/index.jade" ));
   buf.push("<meta name=\"viewport\" content=\"width=device-width, initial-scale=1\">");
   jade_debug.shift();
-  jade_debug.unshift(new jade.DebugItem( 9, "/Users/zhangyuxiang/Projects/work/side_project/100nyu/app-web/src/views/index.jade" ));
+  jade_debug.unshift(new jade.DebugItem( 9, "/Users/zhangyuxiang/Projects/work/side_project/100nyu/100NYU_app/src/views/index.jade" ));
   buf.push("<link rel=\"apple-touch-icon\" href=\"apple-touch-icon.png\">");
   jade_debug.shift();
-  jade_debug.unshift(new jade.DebugItem( 10, "/Users/zhangyuxiang/Projects/work/side_project/100nyu/app-web/src/views/index.jade" ));
+  jade_debug.unshift(new jade.DebugItem( 10, "/Users/zhangyuxiang/Projects/work/side_project/100nyu/100NYU_app/src/views/index.jade" ));
   buf.push("<style id=\"css\">" + (null == (jade_interp = css) ? "" : jade_interp));
   jade_debug.unshift(new jade.DebugItem( undefined, jade_debug[0].filename ));
   jade_debug.shift();
@@ -5640,22 +5586,22 @@ module.exports =
   jade_debug.shift();
   buf.push("</head>");
   jade_debug.shift();
-  jade_debug.unshift(new jade.DebugItem( 11, "/Users/zhangyuxiang/Projects/work/side_project/100nyu/app-web/src/views/index.jade" ));
+  jade_debug.unshift(new jade.DebugItem( 11, "/Users/zhangyuxiang/Projects/work/side_project/100nyu/100NYU_app/src/views/index.jade" ));
   buf.push("<body>");
   jade_debug.unshift(new jade.DebugItem( undefined, jade_debug[0].filename ));
-  jade_debug.unshift(new jade.DebugItem( 12, "/Users/zhangyuxiang/Projects/work/side_project/100nyu/app-web/src/views/index.jade" ));
+  jade_debug.unshift(new jade.DebugItem( 12, "/Users/zhangyuxiang/Projects/work/side_project/100nyu/100NYU_app/src/views/index.jade" ));
   buf.push("<div id=\"app\">" + (null == (jade_interp = body) ? "" : jade_interp));
   jade_debug.unshift(new jade.DebugItem( undefined, jade_debug[0].filename ));
   jade_debug.shift();
   buf.push("</div>");
   jade_debug.shift();
-  jade_debug.unshift(new jade.DebugItem( 13, "/Users/zhangyuxiang/Projects/work/side_project/100nyu/app-web/src/views/index.jade" ));
+  jade_debug.unshift(new jade.DebugItem( 13, "/Users/zhangyuxiang/Projects/work/side_project/100nyu/100NYU_app/src/views/index.jade" ));
   buf.push("<script" + (jade.attr("src", entry, true, true)) + ">");
   jade_debug.unshift(new jade.DebugItem( undefined, jade_debug[0].filename ));
   jade_debug.shift();
   buf.push("</script>");
   jade_debug.shift();
-  jade_debug.unshift(new jade.DebugItem( 14, "/Users/zhangyuxiang/Projects/work/side_project/100nyu/app-web/src/views/index.jade" ));
+  jade_debug.unshift(new jade.DebugItem( 14, "/Users/zhangyuxiang/Projects/work/side_project/100nyu/100NYU_app/src/views/index.jade" ));
   buf.push("<script>");
   jade_debug.unshift(new jade.DebugItem( 16, jade_debug[0].filename ));
   jade_debug.unshift(new jade.DebugItem( 16, jade_debug[0].filename ));
@@ -5668,11 +5614,11 @@ module.exports =
   jade_debug.shift();
   buf.push("</script>");
   jade_debug.shift();
-  jade_debug.unshift(new jade.DebugItem( 17, "/Users/zhangyuxiang/Projects/work/side_project/100nyu/app-web/src/views/index.jade" ));
+  jade_debug.unshift(new jade.DebugItem( 17, "/Users/zhangyuxiang/Projects/work/side_project/100nyu/100NYU_app/src/views/index.jade" ));
   if ( trackingId)
   {
-  jade_debug.unshift(new jade.DebugItem( 18, "/Users/zhangyuxiang/Projects/work/side_project/100nyu/app-web/src/views/index.jade" ));
-  jade_debug.unshift(new jade.DebugItem( 18, "/Users/zhangyuxiang/Projects/work/side_project/100nyu/app-web/src/views/index.jade" ));
+  jade_debug.unshift(new jade.DebugItem( 18, "/Users/zhangyuxiang/Projects/work/side_project/100nyu/100NYU_app/src/views/index.jade" ));
+  jade_debug.unshift(new jade.DebugItem( 18, "/Users/zhangyuxiang/Projects/work/side_project/100nyu/100NYU_app/src/views/index.jade" ));
   buf.push("<script src=\"https://www.google-analytics.com/analytics.js\" async defer>");
   jade_debug.unshift(new jade.DebugItem( undefined, jade_debug[0].filename ));
   jade_debug.shift();
