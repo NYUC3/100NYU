@@ -1,0 +1,11 @@
+@import '../../components/variables.scss';
+
+.app {
+    position: fixed;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    background-color: $backgroundColor;
+    font-family: 'Segoe UI', 'HelveticaNeue-Light', sans-serif;
+}
