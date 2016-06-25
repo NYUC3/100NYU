@@ -5,22 +5,33 @@ import LeftNavigation from '../../components/LeftNavigation';
 import MainView from '../../components/MainView';
 
 class App extends React.Component {
-  render() {
-  	let width = window.innerWidth;
+  constructor(){
+    super()
+  }
+
+  componentWillMount() {
+    this.computeLayout();
+  }
+
+  componentDidMount(){
+    window.addEventListener('resize', ()=>this.computeLayout());
+  }
+  computeLayout(){
+    let width = window.innerWidth;
     let height = window.innerHeight;
     let margin = 5;
 
-  	let HeaderHeight = 70;
+    let HeaderHeight = 70;
     let LeftNavigationWidth = 70;
 
-  	let layout = {
-  		header: {
+    let layout = {
+      header: {
         position: 'fixed',
-  			top: 0,
+        top: 0,
         left: 0,
-  			width,
-  			height: HeaderHeight
-  		},
+        width,
+        height: HeaderHeight
+      },
       leftNavigation: {
         margin,
         position: 'fixed',
@@ -37,9 +48,13 @@ class App extends React.Component {
         width: width-LeftNavigationWidth-3*margin,
         height: height-HeaderHeight-2*margin
       }
-  	}
+    }
+    this.setState({layout});
+  }
+  render() {
+  	let layout = this.state.layout;
     return (
-      <div className="app">
+      <div className='app'>
 				<Header style={layout.header} />
         <LeftNavigation style={layout.leftNavigation} />
         <MainView style={layout.mainView} />
