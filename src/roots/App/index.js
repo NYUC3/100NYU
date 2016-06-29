@@ -71,11 +71,11 @@ class App extends React.Component {
     return (
       <div className='app'>
 				<Header style={layout.header} />
-        <LeftNavigation style={layout.leftNavigation} />
         <div className='MainPage' style={layout.mainPage}>
           <MainView style={layout.mainView} />
           <Footer style={layout.footer} />
         </div>
+        <LeftNavigation style={layout.leftNavigation} />
       </div>
     );
   }
