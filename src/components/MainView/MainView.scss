@@ -1,6 +1,8 @@
 @import '../variables.scss';
 
 .MainView {
-	border-style: dashed;
-	border-width: 1px;
+	.btn{
+		width: 90px;
+		height: 90px;
+	}
 }

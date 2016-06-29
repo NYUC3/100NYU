@@ -1,5 +1,27 @@
 @import '../variables.scss';
 .LeftNavigation {
-	border-style: dashed;
-	border-width: 1px;
+	.btnGroup{
+		margin-top: 30px;
+		.btnContainer{
+			.btnText{
+				display: inline-block;
+				text-align: center;
+			}
+			.btn{
+				margin-left: 10px;
+				width: 30px;
+				height: 30px;
+				cursor: pointer;
+				display: inline-block;
+			}
+			.extend{
+				-webkit-filter:grayscale(100%);
+				opacity: 0.50;
+				&:hover{
+					-webkit-filter:grayscale(0%);
+					opacity: 1;
+				};
+			}
+		}
+	}
 }

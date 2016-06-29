@@ -3,6 +3,7 @@ import React from 'react';
 import Header from '../../components/Header';
 import LeftNavigation from '../../components/LeftNavigation';
 import MainView from '../../components/MainView';
+import Footer from '../../components/Footer';
 
 class App extends React.Component {
   constructor(){
@@ -22,7 +23,8 @@ class App extends React.Component {
     let margin = 5;
 
     let HeaderHeight = 70;
-    let LeftNavigationWidth = 70;
+    let FooterHeight = 30;
+    let LeftNavigationWidth = 200;
 
     let layout = {
       header: {
@@ -38,15 +40,28 @@ class App extends React.Component {
         top: HeaderHeight,
         left: 0,
         width: LeftNavigationWidth,
-        height: height-HeaderHeight-2*margin
+        height: height-HeaderHeight-2*margin-FooterHeight
       },
-      mainView: {
-        margin,
+      mainPage: {
+        // marginTop:margin,
         position: 'fixed',
         top: HeaderHeight,
-        left: LeftNavigationWidth+margin,
-        width: width-LeftNavigationWidth-3*margin,
-        height: height-HeaderHeight-2*margin
+        left: 0,
+        width: width,
+        height: height-HeaderHeight
+      },
+      mainView: {
+        marginTop:margin,
+        marginLeft: 70,
+        top: HeaderHeight,
+        left: 0,
+        width: width-140,
+        Maxheight: height-HeaderHeight-30
+      },
+      footer: {
+        left:0,
+        width,
+        height: FooterHeight
       }
     }
     this.setState({layout});
@@ -57,7 +72,10 @@ class App extends React.Component {
       <div className='app'>
 				<Header style={layout.header} />
         <LeftNavigation style={layout.leftNavigation} />
-        <MainView style={layout.mainView} />
+        <div className='MainPage' style={layout.mainPage}>
+          <MainView style={layout.mainView} />
+          <Footer style={layout.footer} />
+        </div>
       </div>
     );
   }
