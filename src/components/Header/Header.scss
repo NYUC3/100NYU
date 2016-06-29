@@ -1,57 +1,41 @@
-/**
- * React Starter Kit (https://www.reactstarterkit.com/)
- *
- * Copyright © 2014-2016 Kriasoft, LLC. All rights reserved.
- *
- * This source code is licensed under the MIT license found in the
- * LICENSE.txt file in the root directory of this source tree.
- */
-
 @import '../variables.scss';
+.Header{
+  background-color: $white;
+  box-shadow: 2px 2px 3px $secondary;
+  .Container{
+    margin: 0 auto;
+    padding: 20px 0;
+    color: $secondary;
+    .Brand {
+      margin-left: 10px;
+      display: inline-block;
+      font-size: 28px;
+      font-weight: bold;
+      color: $purple;
+      letter-spacing: 2px;
+    }
 
-$brand-color: #61dafb;
+    .Login{
+      float: right;
+      margin-right: 20px;
+      .Link {
+        padding: 3px 8px;
+        display: inline-block;
+        cursor: pointer;
+        &:hover{
+          opacity: 0.8;
+        };
+      }
 
-.root {
-  background: #373277;
-  color: #fff;
-}
-
-.container {
-  margin: 0 auto;
-  padding: 20px 0;
-  max-width: $max-content-width;
-}
-
-.brand {
-  color: color($brand-color lightness(+10%));
-  text-decoration: none;
-  font-size: 1.75em; /* ~28px */
-}
-
-.brandTxt {
-  margin-left: 10px;
-}
-
-.nav {
-  float: right;
-  margin-top: 6px;
-}
-
-.banner {
-  text-align: center;
-}
-
-.bannerTitle {
-  margin: 0;
-  padding: 10px;
-  font-weight: normal;
-  font-size: 4em;
-  line-height: 1em;
-}
-
-.bannerDesc {
-  padding: 0;
-  color: rgba(255, 255, 255, .5);
-  font-size: 1.25em;
-  margin: 0;
+      .Highlight {
+        padding: 3px 8px; 
+        border-radius: 20px;
+        background: $white;
+        &:hover{
+          background: $purple;
+          color: $white;
+        };
+      }
+    }
+  }
 }
