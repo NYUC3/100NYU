@@ -1,0 +1,41 @@
+@import '../variables.scss';
+.Header{
+  background-color: $white;
+  box-shadow: 2px 2px 3px $secondary;
+  .Container{
+    margin: 0 auto;
+    padding: 20px 0;
+    color: $secondary;
+    .Brand {
+      margin-left: 10px;
+      display: inline-block;
+      font-size: 28px;
+      font-weight: bold;
+      color: $purple;
+      letter-spacing: 2px;
+    }
+
+    .Login{
+      float: right;
+      margin-right: 20px;
+      .Link {
+        padding: 3px 8px;
+        display: inline-block;
+        cursor: pointer;
+        &:hover{
+          opacity: 0.8;
+        };
+      }
+
+      .Highlight {
+        padding: 3px 8px; 
+        border-radius: 20px;
+        background: $white;
+        &:hover{
+          background: $purple;
+          color: $white;
+        };
+      }
+    }
+  }
+}
