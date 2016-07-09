@@ -1,6 +1,7 @@
 'use strict';
 
 const path = require('path');
+// Parse the command line arguments
 const args = require('minimist')(process.argv.slice(2));
 
 // List of allowed environments
