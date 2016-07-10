@@ -1,11 +1,11 @@
-require('./App.scss')
+require('./Event.scss')
 import React from 'react';
 import Header from '../../components/Header';
 import LeftNavigation from '../../components/LeftNavigation';
-import MainView from '../../components/MainView';
+import EventView from '../../components/EventView';
 // import Footer from '../../components/Footer';
 
-class App extends React.Component {
+class Event extends React.Component {
   constructor(){
     super()
   }
@@ -70,7 +70,7 @@ class App extends React.Component {
       <div className='app'>
 				<Header style={layout.header} />
         <div className='MainPage' style={layout.mainPage}>
-          <MainView style={layout.mainView} />
+          <EventView style={layout.mainView} />
         </div>
         <LeftNavigation style={layout.leftNavigation} />
       </div>
@@ -78,7 +78,7 @@ class App extends React.Component {
   }
 }
 
-App.defaultProps = {
+Event.defaultProps = {
 };
 
-export default App;
+export default Event;

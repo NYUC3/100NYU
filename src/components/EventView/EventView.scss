@@ -1,0 +1,159 @@
+@import '../variables.scss';
+
+.EventViewContainer {
+	.frame{
+			border-radius: 1.5em;
+		}
+	.EventDetail{
+		.frame{
+			border-radius: 1.5em;
+		}
+		background-color: $white;
+		position: relative;
+		padding-left: 20px;
+		padding-top: 20px;
+		.EventPreview{
+			background-color: $primary;
+			position: relative;
+			left: 0%;
+			top: 0%;
+			.EventRank{
+				position: absolute;
+				left: 10%;
+				top: 10%;
+				transform: translate(-50%, -50%);
+				color: $white;
+			}
+			.EventView{
+				position: absolute;
+				left: 80%;
+				top: 65%;
+				font-size: 10px;
+				transform: translate(-50%, -50%);
+				color: $white;
+				white-space: nowrap;		
+			}
+			.EventGo{
+				position: absolute;
+				left: 80%;
+				top: 70%;
+				font-size: 10px;
+				transform: translate(-50%, -50%);
+				color: $white;
+		    white-space: nowrap;
+			}
+			.EmojiGroup{
+				position: absolute;
+				left: 5%;
+				top: 85%;
+				.emoji{
+					width: 30px;
+					height: 30px;
+					padding-right: 5px;
+				}
+			}
+			.Vote{
+				position: absolute;
+				left: 80%;
+				top: 78%;
+				display:inline-block;
+				.fa-caret{
+					cursor: pointer;
+					color: $white;
+					text-shadow: 2px 2px 3px $secondary;
+					left: 50%;
+				}
+				.fa-caret-down{
+					color: $primary;
+				}
+				.VoteHotness{
+					text-align: center;
+				}
+			}
+		}
+		.EventWords{
+			position: absolute;
+			left: 27%;
+			top: 10%;
+
+			.title{
+				font-weight: 900;
+				font-size: 24px;
+				padding-bottom:20px;
+				padding-left:30px;
+			}
+			.content{
+				font-weight: normal;
+				padding-bottom: 10px;
+				padding-left: 30px;
+			}
+			.TimePlace{
+				transform: translate(30%, 0%);
+				.Time{	
+					/*padding-left: 70px;*/
+					vertical-align: baseline;
+					padding-bottom: 5px;
+					padding-up: 5px;
+				}
+				.Location{
+					/*padding-left: 70px;*/
+					vertical-align:baseline;
+					padding-bottom: 5px;
+					padding-up: 5px;
+				}
+			}
+			.horizentalLine{
+				width: 80%;
+    		border: 0;
+		    height: 1px;
+		    background: #000;
+		    opacity: 0.2;
+		    left: 40%;
+		    /*transform: translate(50%, 0%);*/
+			}
+			.Activity{
+				transform: translate(50%, 0%);
+				position: absolute;
+				left: 40%;
+				top: 75%;
+				.activity{
+					width: 50px;
+					height: 50px;
+					padding-right: 10px;
+				}
+			}
+		}
+	}
+	.Follower{
+		.frame{
+			border-radius: 1.5em;
+		}
+		background-color: $white;
+		position: relative;
+		font-size: 12px;
+		padding-left: 20px;
+		padding-top: 20px;
+		.Name{
+			color: $purple;
+			cursor: pointer;
+		}
+		.FollowerUsers{
+			position: absolute;
+			left: 2%;
+			top: 50%;
+			.fa{
+				vertical-align: middle;
+			}
+			.User{
+				width: 40px;
+				height: 40px;
+				padding-right: 10px;	
+				vertical-align: middle;
+				cursor: pointer;
+			}
+			transform: translate(50%, 0%);
+		}
+	}
+}
+
+

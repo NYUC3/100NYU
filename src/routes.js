@@ -1,14 +1,15 @@
 import React from 'react';
-import { IndexRoute, Route, Redirect } from 'react-router';
+import { IndexRoute, Route, Redirect} from 'react-router';
 import Master from './roots/Master'
 import App from './roots/App'
-// import Login from './roots/Login'
+import Event from './roots/Event'
 
 export default (
   <Route path='/' component={Master} >
     <IndexRoute component={App} />
     <Route path='/app' component={App} />
-    // <Redirect from='*' to='/' />
+    <Route path='/event' component={Event} />
+    <Redirect from='*' to='/' />
   </Route>
 );
 

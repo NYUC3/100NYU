@@ -2,8 +2,8 @@ require('./LeftNavigation.scss');
 import React from 'react';
 import cx from 'className';
 let left_100NYU = '../../images/left/100_NYU.png';
-let left_All = '../../images/left/All.png';
-let left_List = '../../images/left/List.png';
+// let left_All = '../../images/left/All.png';
+// let left_List = '../../images/left/List.png';
 let left_Trending = '../../images/left/Trending.png';
 let left_NYU = '../../images/left/NYU.png';
 
@@ -29,12 +29,6 @@ class LeftNavigation extends React.Component{
 					
 					{this.state.extended &&
 						<div>
-							<div className='btnContainer'>
-								<img className={cx('btn','extend')} src={left_All} />
-							</div>
-							<div className='btnContainer'>
-								<img className={cx('btn','extend')} src={left_List} />
-							</div>
 							<div className='btnContainer'>
 								<img className={cx('btn','extend')} src={left_Trending} />
 							</div>
