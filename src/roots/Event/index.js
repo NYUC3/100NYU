@@ -53,7 +53,8 @@ class Event extends React.Component {
         marginLeft: 100,
         top: HeaderHeight,
         left: 0,
-        width: width-40,
+        width: width-160,
+        fullHeight: height-HeaderHeight-30,
         Maxheight: height-HeaderHeight-30
       },
       footer: {

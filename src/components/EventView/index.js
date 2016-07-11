@@ -4,29 +4,30 @@ import cx from 'className';
 
 let event = '../../images/event/event.png'
 let emojis = ['../../images/emoji/music.png', '../../images/emoji/night.png', '../../images/emoji/outdoor.png']
-let users = ['../../images/icon/user1.png', '../../images/icon/user2.png', '../../images/icon/user3.png', '../../images/icon/user4.png', '../../images/icon/user5.png', '../../images/icon/user6.png', '../../images/icon/user7.png', '../../images/icon/user8.png', '../../images/icon/user9.png']
+// let users = ['../../images/icon/user1.png', '../../images/icon/user2.png', '../../images/icon/user3.png', '../../images/icon/user4.png', '../../images/icon/user5.png', '../../images/icon/user6.png', '../../images/icon/user7.png', '../../images/icon/user8.png', '../../images/icon/user9.png']
 class EventView extends React.Component{
 	render(){
 		let style = this.props.style;
 		let layout = {
 			'EventDetail': {
-				height: style.height,
-				width: style.width-style.marginLeft,
+				height: style.fullHeight-180,
+				width: style.width,
 				marginTop: 20,
 				marginBottom: 10
 			},
 			'EventPreview': {
-				height: (style.width-style.marginLeft*4)/3+80,
-				width: (style.width-style.marginLeft)*0.25
+				height: style.fullHeight-200,
+				width: style.width*0.25
 			},
 			'EventWords': {
 				height: (style.width-style.marginLeft*4)/3+80,
-				width: (style.width-style.marginLeft*4)*0.75
+				width: style.width-style.marginLeft*4
 			},
 			'Follower': {
-				width: style.width-style.marginLeft,
+				width: style.width,
 				height: 100,
-				marginTop: 20
+				marginTop: 20,
+				marginBottom: 20
 			}
 		}
 		return(
@@ -61,18 +62,20 @@ class EventView extends React.Component{
 							<br />
 							<div className='content'>Tips: Do not bring your backpack, so you may get an express access!</div>
 						</div>
-						<hr className='horizentalLine'/>
+						
 						<div className='TimePlace'>
+							<hr className='horizentalLine'/>
 							<div className='Time'>
-								<img src='../../images/icon/calendar.png' />
+								<img width={20} height={20} src='../../images/icon/calendar.png' />
 								<span> Next Event: Saturday, July 23 at 1 PM </span>
 							</div>
 							<div className='Location'>
-								<img src='../../images/icon/location.png' />
+								<img width={20} height={20} src='../../images/icon/location.png' />
 								<span > Location: Central Park </span>
 							</div>
+							<hr className='horizentalLine'/>
 						</div>
-						<hr className='horizentalLine'/>
+						
 						<div className='Activity'>
 							<img className="activity" key="Check" src='../../images/icon/Check.png'/>
 							<img className="activity" key="Love" src='../../images/icon/Love.png'/>
@@ -84,7 +87,7 @@ class EventView extends React.Component{
 					<a className="Name">Kathy Mason</a> and others are also going!
 					<div className="FollowerUsers">
 						<i className={cx('fa', 'fa-chevron-left', 'fa-2x')} />
-						{users.map((user, index)=>{return(<img src={user} key={index} className={'User'} />)})}
+						{Array.from(Array(10).keys()).map((index)=>{return(<img src={'../../images/icon/Profile.png'} key={index} className={'User'} />)})}
 						<i className={cx('fa', 'fa-chevron-right', 'fa-2x')} />
 					</div>
 				</div>
