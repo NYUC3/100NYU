@@ -1,5 +1,5 @@
 var mongoose = require('mongoose');
-var db = mongoose.connect('mongodb://localhost/100NYU');
+var db = mongoose.connect('mongodb://localhost/100NYUTest').connection;
 
 require('./models');
 

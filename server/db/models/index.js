@@ -1,2 +1,3 @@
-require('./user');
 require('./event');
+require('./school');
+require('./user');
