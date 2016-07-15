@@ -6,6 +6,10 @@ Structure
 ---
 The system is developed with ReactJS and other related technologies.
 
+Data Seeding
+---
+mongoimport --db 100NYUTest --collection events --type csv --headerline --file EventData.csv
+
 Starting
 ---
 First install the node dependencies
