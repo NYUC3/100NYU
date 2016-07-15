@@ -31,7 +31,18 @@ const schema = new Schema({
 	},
 	location: {
 		type: String
+	},
+	numberViewed:{
+		type: Number
+	},
+	numberGoing: {
+		type: Number
 	}
 })
+
+schema.methods.findRanking = function(){
+
+	return this.model('Event').find({upvotes: {$gt: this.upvotes}}).count().exec();
+}
 
 module.exports = mongoose.model('Event', schema);
