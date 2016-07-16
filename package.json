@@ -76,6 +76,7 @@
     "react-dom": "^15.0.0",
     "react-router": "^2.5.1",
     "react-tap-event-plugin": "^1.0.0",
+    "superagent": "^2.1.0",
     "webpack-dev-middleware": "^1.6.1"
   }
 }

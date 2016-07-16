@@ -18,6 +18,14 @@ First install the node dependencies
     npm install
 ```
 
+Before running the client, make sure to have installed mongodb and seed the database
+```
+mongoimport --db 100NYUTest --collection events --type csv --headerline --file EventData.csv
+
+cd server/
+
+node main.js
+```
 
 To start the application
 

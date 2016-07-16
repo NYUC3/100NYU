@@ -1,13 +1,36 @@
 require('./EventView.scss');
-import React from 'react';
+import React, {Component} from 'react';
 import cx from 'className';
-
-let event = '../../images/event/event.png'
+let eventUrl = 'http://localhost:1337/api/events/';
+let event = '../../images/eventCover/event.png'
 let emojis = ['../../images/emoji/music.png', '../../images/emoji/night.png', '../../images/emoji/outdoor.png']
-// let users = ['../../images/icon/user1.png', '../../images/icon/user2.png', '../../images/icon/user3.png', '../../images/icon/user4.png', '../../images/icon/user5.png', '../../images/icon/user6.png', '../../images/icon/user7.png', '../../images/icon/user8.png', '../../images/icon/user9.png']
-class EventView extends React.Component{
+class EventView extends Component{
+	constructor(){
+		super();
+		this.state={
+			detail: {}
+		}
+	}
+	componentWillMount(){
+		const _this = this;
+    fetch(`${eventUrl}${this.props.id}`,{
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      mode: 'cors'
+    }).then(function(response) {
+      return response.json();
+    }).then(function(j) {
+      _this.setState({
+        detail: j
+      })
+    });
+	}
 	render(){
 		let style = this.props.style;
+		let {detail} = this.state;
+		console.log(detail)
 		let layout = {
 			'EventDetail': {
 				height: style.fullHeight-180,
@@ -35,9 +58,9 @@ class EventView extends React.Component{
 				<div className={cx('EventDetail', 'frame')} style={layout.EventDetail}>
 					<div className={cx('EventPreview', 'frame')} style={layout.EventPreview}>
 						<img src={event} width={layout.EventPreview.width}/>
-						<text className='EventRank'>#20</text>
-						<text className='EventGo'>6.4k going</text>
-						<text className='EventView'>20k Viewed</text>
+						<text className='EventRank'>#{detail.ranking+1}</text>
+						<text className='EventGo'>{detail.numberGoing} going</text>
+						<text className='EventView'>{detail.numberViewed} Viewed</text>
 						<div className='EmojiGroup'>
 							{emojis.map((emoji, index)=>{return(<img className='emoji' key={index} src={emoji} />)})}
 						</div>
@@ -46,7 +69,7 @@ class EventView extends React.Component{
 								<i className={cx('fa','fa-caret-up', 'fa-caret', 'fa-2x')} onClick={()=>{return true}}></i>
 							</div>
 							<div className='VoteHotness'>
-								100
+								{detail.upvotes}
 							</div>
 							<div>
 								<i className={cx('fa','fa-caret-down', 'fa-caret', 'fa-2x')} onClick={()=>{return true}}></i>
@@ -55,31 +78,31 @@ class EventView extends React.Component{
 					</div>
 					<div className='EventWords' style={layout.EventWords}>
 						<div className='title'>
-							An Outdoor Concert in Central Park!
+							{detail.title}
 						</div>
 						<div className='contentGroup'>
-							<div className='content'>Come and join us for an outdoor concert in Centeral Park for great music and meet interesting people! Events are usually free.</div>
+							<div className='content'>{detail.description}</div>
 							<br />
-							<div className='content'>Tips: Do not bring your backpack, so you may get an express access!</div>
+							<div className='content'>Tips: {(detail.tips=='')?'--':detail.tips}</div>
 						</div>
 						
 						<div className='TimePlace'>
 							<hr className='horizentalLine'/>
 							<div className='Time'>
-								<img width={20} height={20} src='../../images/icon/calendar.png' />
-								<span> Next Event: Saturday, July 23 at 1 PM </span>
+								<img width={20} height={20} src='../../images/Calendar.png' />
+								<span> Next Event: --</span>
 							</div>
 							<div className='Location'>
-								<img width={20} height={20} src='../../images/icon/location.png' />
-								<span > Location: Central Park </span>
+								<img width={20} height={20} src='../../images/Location.png' />
+								<span > Location: {detail.location} </span>
 							</div>
 							<hr className='horizentalLine'/>
 						</div>
 						
 						<div className='Activity'>
-							<img className="activity" key="Check" src='../../images/icon/Check.png'/>
-							<img className="activity" key="Love" src='../../images/icon/Love.png'/>
-							<img className="activity" key="Share" src='../../images/icon/Share.png'/>
+							<img className="activity" key="Check" src='../../images/Check.png'/>
+							<img className="activity" key="Love" src='../../images/Love.png'/>
+							<img className="activity" key="Share" src='../../images/Share.png'/>
 						</div>
 					</div>
 				</div>
@@ -87,7 +110,7 @@ class EventView extends React.Component{
 					<a className="Name">Kathy Mason</a> and others are also going!
 					<div className="FollowerUsers">
 						<i className={cx('fa', 'fa-chevron-left', 'fa-2x')} />
-						{Array.from(Array(10).keys()).map((index)=>{return(<img src={'../../images/icon/Profile.png'} key={index} className={'User'} />)})}
+						{Array.from(Array(10).keys()).map((index)=>{return(<img src={'../../images/Profile.png'} key={index} className={'User'} />)})}
 						<i className={cx('fa', 'fa-chevron-right', 'fa-2x')} />
 					</div>
 				</div>

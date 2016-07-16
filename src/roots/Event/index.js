@@ -71,7 +71,7 @@ class Event extends React.Component {
       <div className='app'>
 				<Header style={layout.header} />
         <div className='MainPage' style={layout.mainPage}>
-          <EventView style={layout.mainView} />
+          <EventView style={layout.mainView} id={this.props.params.eventId}/>
         </div>
         <LeftNavigation style={layout.leftNavigation} />
       </div>

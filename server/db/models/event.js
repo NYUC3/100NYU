@@ -40,6 +40,9 @@ const schema = new Schema({
 	},
 	numberSaved:{
 		type: Number
+	},
+	NYUFeature: {
+		type: String
 	}
 })
 
