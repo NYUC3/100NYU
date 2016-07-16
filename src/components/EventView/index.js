@@ -1,12 +1,36 @@
 require('./EventView.scss');
-import React from 'react';
+import React, {Component} from 'react';
 import cx from 'className';
-
+let eventUrl = 'http://localhost:1337/api/events/';
 let event = '../../images/eventCover/event.png'
 let emojis = ['../../images/emoji/music.png', '../../images/emoji/night.png', '../../images/emoji/outdoor.png']
-class EventView extends React.Component{
+class EventView extends Component{
+	constructor(){
+		super();
+		this.state={
+			detail: {}
+		}
+	}
+	componentWillMount(){
+		const _this = this;
+    fetch(`${eventUrl}${this.props.id}`,{
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      mode: 'cors'
+    }).then(function(response) {
+      return response.json();
+    }).then(function(j) {
+      _this.setState({
+        detail: j
+      })
+    });
+	}
 	render(){
 		let style = this.props.style;
+		let {detail} = this.state;
+		console.log(detail)
 		let layout = {
 			'EventDetail': {
 				height: style.fullHeight-180,
@@ -34,9 +58,9 @@ class EventView extends React.Component{
 				<div className={cx('EventDetail', 'frame')} style={layout.EventDetail}>
 					<div className={cx('EventPreview', 'frame')} style={layout.EventPreview}>
 						<img src={event} width={layout.EventPreview.width}/>
-						<text className='EventRank'>#20</text>
-						<text className='EventGo'>6.4k going</text>
-						<text className='EventView'>20k Viewed</text>
+						<text className='EventRank'>#{detail.ranking+1}</text>
+						<text className='EventGo'>{detail.numberGoing} going</text>
+						<text className='EventView'>{detail.numberViewed} Viewed</text>
 						<div className='EmojiGroup'>
 							{emojis.map((emoji, index)=>{return(<img className='emoji' key={index} src={emoji} />)})}
 						</div>
@@ -45,7 +69,7 @@ class EventView extends React.Component{
 								<i className={cx('fa','fa-caret-up', 'fa-caret', 'fa-2x')} onClick={()=>{return true}}></i>
 							</div>
 							<div className='VoteHotness'>
-								100
+								{detail.upvotes}
 							</div>
 							<div>
 								<i className={cx('fa','fa-caret-down', 'fa-caret', 'fa-2x')} onClick={()=>{return true}}></i>
@@ -54,23 +78,23 @@ class EventView extends React.Component{
 					</div>
 					<div className='EventWords' style={layout.EventWords}>
 						<div className='title'>
-							An Outdoor Concert in Central Park!
+							{detail.title}
 						</div>
 						<div className='contentGroup'>
-							<div className='content'>Come and join us for an outdoor concert in Centeral Park for great music and meet interesting people! Events are usually free.</div>
+							<div className='content'>{detail.description}</div>
 							<br />
-							<div className='content'>Tips: Do not bring your backpack, so you may get an express access!</div>
+							<div className='content'>Tips: {(detail.tips=='')?'--':detail.tips}</div>
 						</div>
 						
 						<div className='TimePlace'>
 							<hr className='horizentalLine'/>
 							<div className='Time'>
 								<img width={20} height={20} src='../../images/Calendar.png' />
-								<span> Next Event: Saturday, July 23 at 1 PM </span>
+								<span> Next Event: --</span>
 							</div>
 							<div className='Location'>
 								<img width={20} height={20} src='../../images/Location.png' />
-								<span > Location: Central Park </span>
+								<span > Location: {detail.location} </span>
 							</div>
 							<hr className='horizentalLine'/>
 						</div>

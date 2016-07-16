@@ -8,7 +8,7 @@ export default (
   <Route path='/' component={Master} >
     <IndexRoute component={App} />
     <Route path='/app' component={App} />
-    <Route path='/event' component={Event} />
+    <Route path='/event/:eventId' component={Event} />
     <Redirect from='*' to='/' />
   </Route>
 );
