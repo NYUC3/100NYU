@@ -37,6 +37,9 @@ const schema = new Schema({
 	},
 	numberGoing: {
 		type: Number
+	},
+	NYUFeature: {
+		type: String
 	}
 })
 

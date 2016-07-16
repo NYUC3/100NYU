@@ -2,6 +2,7 @@ const express = require('express');
 const router = express.Router();
 const mongoose = require('mongoose'); module.exports = router;
 
+// get all events according to upvote value
 router.get('/', function (req, res, next) {
   mongoose.model('Event')
   .find(req.query)
@@ -11,6 +12,17 @@ router.get('/', function (req, res, next) {
   })
   .then(null, next);
 });
+
+// get NYU featured events
+router.get('/nyu', function(req, res, next) {
+  mongoose.model('Event')
+  .find({'NYUFeature': 'Y'})
+  .sort({'upvotes': -1})
+  .then(function (events) {
+    res.json(events);
+  })
+  .then(null, next);
+})
 
 router.param('eventId', function(req, res, next, id) {
   mongoose.model('Event')
