@@ -1,24 +1,24 @@
 const express = require('express');
 const router = express.Router();
-const mongoose = require('mongoose');
-module.exports = router;
+const mongoose = require('mongoose'); module.exports = router;
 
 router.get('/', function (req, res, next) {
   mongoose.model('Event')
   .find(req.query)
+  .sort({'upvotes': -1})
   .then(function (events) {
     res.json(events);
   })
   .then(null, next);
 });
 
-router.param("eventId", function(req, res, next, id) {
+router.param('eventId', function(req, res, next, id) {
   mongoose.model('Event')
   .findById(id)
   .then(function(event){
     if(!event) throw new Error('not found');
     event.findRanking().then(function(ranking){
-      req.event = Object.assign({"ranking": ranking}, event._doc);
+      req.event = Object.assign({'ranking': ranking}, event._doc);
       next();
     });
   })
