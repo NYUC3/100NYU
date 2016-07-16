@@ -2,9 +2,8 @@ require('./EventView.scss');
 import React from 'react';
 import cx from 'className';
 
-let event = '../../images/event/event.png'
+let event = '../../images/eventCover/event.png'
 let emojis = ['../../images/emoji/music.png', '../../images/emoji/night.png', '../../images/emoji/outdoor.png']
-// let users = ['../../images/icon/user1.png', '../../images/icon/user2.png', '../../images/icon/user3.png', '../../images/icon/user4.png', '../../images/icon/user5.png', '../../images/icon/user6.png', '../../images/icon/user7.png', '../../images/icon/user8.png', '../../images/icon/user9.png']
 class EventView extends React.Component{
 	render(){
 		let style = this.props.style;
@@ -66,20 +65,20 @@ class EventView extends React.Component{
 						<div className='TimePlace'>
 							<hr className='horizentalLine'/>
 							<div className='Time'>
-								<img width={20} height={20} src='../../images/icon/calendar.png' />
+								<img width={20} height={20} src='../../images/Calendar.png' />
 								<span> Next Event: Saturday, July 23 at 1 PM </span>
 							</div>
 							<div className='Location'>
-								<img width={20} height={20} src='../../images/icon/location.png' />
+								<img width={20} height={20} src='../../images/Location.png' />
 								<span > Location: Central Park </span>
 							</div>
 							<hr className='horizentalLine'/>
 						</div>
 						
 						<div className='Activity'>
-							<img className="activity" key="Check" src='../../images/icon/Check.png'/>
-							<img className="activity" key="Love" src='../../images/icon/Love.png'/>
-							<img className="activity" key="Share" src='../../images/icon/Share.png'/>
+							<img className="activity" key="Check" src='../../images/Check.png'/>
+							<img className="activity" key="Love" src='../../images/Love.png'/>
+							<img className="activity" key="Share" src='../../images/Share.png'/>
 						</div>
 					</div>
 				</div>
@@ -87,7 +86,7 @@ class EventView extends React.Component{
 					<a className="Name">Kathy Mason</a> and others are also going!
 					<div className="FollowerUsers">
 						<i className={cx('fa', 'fa-chevron-left', 'fa-2x')} />
-						{Array.from(Array(10).keys()).map((index)=>{return(<img src={'../../images/icon/Profile.png'} key={index} className={'User'} />)})}
+						{Array.from(Array(10).keys()).map((index)=>{return(<img src={'../../images/Profile.png'} key={index} className={'User'} />)})}
 						<i className={cx('fa', 'fa-chevron-right', 'fa-2x')} />
 					</div>
 				</div>
