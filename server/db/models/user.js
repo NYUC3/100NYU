@@ -2,7 +2,7 @@
 
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
-const Event = mongoose.Schema('Event')
+const Event = mongoose.model('Event');
 
 const schema = new Schema({
 	email: {
