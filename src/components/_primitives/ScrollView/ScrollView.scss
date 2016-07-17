@@ -1,0 +1,12 @@
+@import '../../variables.scss';
+
+.track-vertical {
+    height: 100%;
+    right: 5px;
+}
+
+.thumb-vertical {
+    background-color: $bars;
+    opacity: 0.5;
+    border-radius: 5px; 
+}

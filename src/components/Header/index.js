@@ -13,7 +13,7 @@ class Header extends React.Component {
 						<span className='home' onClick={()=>browserHistory.push('/')}>100NYU</span>
 					</div>
 					<div className="Login">
-					  <span className='Link'>Log in</span>
+					  <span className='Link' onClick={()=>browserHistory.push('/login')}>Log in</span>
 				 	  <span className={cx('Link', 'Highlight')}>Sign up</span>
 				 	</div>
 			 	</div>
