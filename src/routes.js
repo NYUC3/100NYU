@@ -9,6 +9,7 @@ export default (
     <IndexRoute component={App} />
     <Route path='/app' component={App} />
     <Route path='/event/:eventId' component={Event} />
+    <Route path='/nyu' component={App} />
     <Redirect from='*' to='/' />
   </Route>
 );
