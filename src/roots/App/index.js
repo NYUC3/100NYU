@@ -70,7 +70,7 @@ class App extends React.Component {
       <div className='app'>
 				<Header style={layout.header} />
         <div className='MainPage' style={layout.mainPage}>
-          <MainView style={layout.mainView} />
+          <MainView style={layout.mainView} path={this.props.route.path}/>
         </div>
         <LeftNavigation style={layout.leftNavigation} />
       </div>
