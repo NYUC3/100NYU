@@ -1,0 +1,19 @@
+@import '../../variables.scss';
+
+.button {
+    background-color: $purple;
+    color: $white;
+    border: none;
+    outline: none;
+    padding: 8px 20px 8px 20px;
+    font-size: 12px;
+    cursor: pointer;
+    transition: all 0.2s;
+    position: relative;
+    
+    .spinner {
+        position: absolute;
+        left: 5px;
+        top: 10px;
+    }
+}
