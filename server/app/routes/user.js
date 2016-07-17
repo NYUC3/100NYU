@@ -15,6 +15,7 @@ router.get('/', function (req, res, next) {
 router.param("userId", function(req, res, next, id) {
   mongoose.model('User')
   .findById(id)
+  .populate('school')
   .then(function(user){
     if(!user) throw new Error('not found');
     req.user = user;
@@ -34,6 +35,25 @@ router.post('/', function (req, res, next) {
   })
   .then(null, next);
 });
+
+router.post('/:userId/save', function(req, res, next) {
+  req.user
+  .saveEvent(req.body)
+  .then(function(updatedUser){
+    res.status(204).send('saved');
+  })
+  .then(null, next);
+})
+
+router.post('/:userId/go', function(req, res, next) {
+  req.user
+  .goToEvent(req.body)
+  .then(function(updatedUser){
+    res.status(204).send('saved');
+  })
+  .then(null, next);
+})
+
 
 router.delete('/:id', function(req, res, next){
   req.user.remove()
