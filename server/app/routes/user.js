@@ -15,7 +15,7 @@ router.get('/', function (req, res, next) {
 router.param("userId", function(req, res, next, id) {
   mongoose.model('User')
   .findById(id)
-  .populate('school')
+  .populate('savedEvents eventsToGo school')
   .then(function(user){
     if(!user) throw new Error('not found');
     req.user = user;
