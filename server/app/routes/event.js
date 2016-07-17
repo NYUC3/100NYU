@@ -15,10 +15,19 @@ router.get('/', function (req, res, next) {
 
 // get NYU featured events
 router.get('/nyu', function(req, res, next) {
+  var events = [];
   mongoose.model('Event')
   .find({'NYUFeature': 'Y'})
   .sort({'upvotes': -1})
-  .then(function (events) {
+  .then(function (NYUevents) {
+    events = events.concat(NYUevents);
+    // res.json(events);
+  })
+  mongoose.model('Event')
+  .find({'NYUFeature': 'N'})
+  .sort({'upvotes': -1})
+  .then(function (NonNYUevents) {
+    events = events.concat(NonNYUevents);
     res.json(events);
   })
   .then(null, next);

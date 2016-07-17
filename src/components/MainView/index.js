@@ -2,7 +2,7 @@ require('./MainView.scss');
 import { browserHistory } from 'react-router';
 import React, {Component} from 'react';
 import _ from 'lodash';
-let eventsUrl = 'http://localhost:1337/api/events/';
+let eventsUrl = 'http://localhost:1337/api/events';
 
 class MainView extends Component{
   constructor(){
@@ -11,9 +11,10 @@ class MainView extends Component{
       events: []
     }
   }
-  componentWillMount(){
+  getData(path){
     const _this = this;
-    fetch(eventsUrl,{
+    path = (path==undefined)?'':path
+    fetch(`${eventsUrl}${path}`,{
       method: 'GET',
       headers: {
         'Content-Type': 'application/json'
@@ -26,6 +27,12 @@ class MainView extends Component{
         events: j
       })
     });
+  }
+  componentWillMount(){
+    this.getData(this.props.path);
+  }
+  componentWillUpdate(){
+    this.getData(this.props.path);
   }
 
 	render(){

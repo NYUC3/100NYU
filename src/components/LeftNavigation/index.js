@@ -1,6 +1,7 @@
 require('./LeftNavigation.scss');
 import React from 'react';
 import cx from 'className';
+import { browserHistory } from 'react-router';
 let left_100NYU = '../../images/left/100_NYU.png';
 // let left_All = '../../images/left/All.png';
 // let left_List = '../../images/left/List.png';
@@ -30,10 +31,10 @@ class LeftNavigation extends React.Component{
 					{this.state.extended &&
 						<div>
 							<div className='btnContainer'>
-								<img className={cx('btn','extend')} src={left_Trending} />
+								<img className={cx('btn','extend')} src={left_Trending} onClick={()=>browserHistory.push('/')}/>
 							</div>
 							<div className='btnContainer'>
-								<img className={cx('btn','extend')} src={left_NYU} />
+								<img className={cx('btn','extend')} src={left_NYU} onClick={()=>browserHistory.push('/nyu')}/>
 							</div>
 						</div>}
 				</div>
