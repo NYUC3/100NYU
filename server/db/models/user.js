@@ -50,7 +50,7 @@ const schema = new Schema({
 })
 
 schema.methods.sanitize = function() {
-    return _.omit(this.toJSON(), ['password', 'salt']);
+    return _.omit(this.toJSON(), ['password', 'salt','email']);
 };
 
 var generateSalt = function() {
