@@ -4,6 +4,43 @@ import React, {Component} from 'react';
 import _ from 'lodash';
 let eventsUrl = 'http://localhost:1337/api/events';
 
+class Event extends Component {
+  render(){
+    let btnStyle = this.props.style;
+    return (
+      <div className="event" >
+        <img style={btnStyle} className="eventImg" src={`../../images/icon/${this.props.photo}`} onClick={()=>browserHistory.push(`/event/${this.props.id}`)}/>
+        <span>{this.props.children}</span>
+      </div>
+    )
+  }
+}
+
+// <img className='btn' src={`'../../images/icon/${event.photo}`} key={index} style={btnStyle} onClick={()=>browserHistory.push(`/event/${event._id}`)}/>
+
+class EventList extends Component {
+
+  render(){
+    let btnStyle = {
+        marginRight: (this.props.styleData.width-80)/11-80,
+        marginBottom: (this.props.styleData.Maxheight-5*90)/4
+    };
+    let eventNodes = this.props.eventsData.map(function(event, index){
+      return(
+        <Event style={btnStyle} key={index} photo={event.photo} id={event._id}>
+          {event.title}
+        </Event>
+      );
+    });
+    return(
+      <div className="EventList">
+        {eventNodes}
+      </div>
+    )
+  }
+}
+
+
 class MainView extends Component{
   constructor(){
     super();
@@ -11,6 +48,7 @@ class MainView extends Component{
       events: []
     }
   }
+
   getData(path){
     const _this = this;
     path = (path==undefined)?'':path
@@ -28,6 +66,7 @@ class MainView extends Component{
       })
     });
   }
+
   componentWillMount(){
     this.getData(this.props.path);
   }
@@ -37,21 +76,13 @@ class MainView extends Component{
 
 	render(){
 		let style = this.props.style;
-    let {events} = this.state;
-    let imgs = _.map(events, 'photo')
-		let btnStyle = {
-			marginRight: (style.width-80)/11-80,
-			marginBottom: (style.Maxheight-5*90)/4
-		}
 		return(
 			<div className="MainView" style={style}>
-				{imgs.map(function(src, index){
-          let id = _.find(events,  function(obj) {return obj.photo==src})['_id'];
-					return(<img className='btn' src={`'../../images/icon/${src}`} key={index} style={btnStyle} onClick={()=>browserHistory.push(`/event/${id}`)}/>)
-				})}
+        <EventList eventsData={this.state.events} styleData={style}/>
 			</div>
 		)
 	}
+
 	handleScroll() {
     this.setState({
       height: 10
