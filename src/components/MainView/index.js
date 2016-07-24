@@ -1,22 +1,33 @@
 require('./MainView.scss');
 import { browserHistory } from 'react-router';
 import React, {Component} from 'react';
-import _ from 'lodash';
 let eventsUrl = 'http://localhost:1337/api/events';
 
 class Event extends Component {
+  constructor(){
+    super();
+    this.state={
+      titleLeft: '0px',
+      titleTop: '0px'
+    }
+    // this.onMouseMove = this.onMouseMove.bind(this);
+  }
+  // onMouseMove(e){
+  //   var x = e.layerX, y = e.layerY;
+  //   this.setState({titleLeft: x +'px',titleTop: y+'px'});
+  // }
+
   render(){
     let btnStyle = this.props.style;
+    let titleStyle = {left:this.state.titleLeft, right:this.state.titleTop};
     return (
-      <div className="event" >
-        <img style={btnStyle} className="eventImg" src={`../../images/icon/${this.props.photo}`} onClick={()=>browserHistory.push(`/event/${this.props.id}`)}/>
-        <span>{this.props.children}</span>
+      <div className="event">
+        <img className="eventImg" style={btnStyle} src={`../../images/icon/${this.props.photo}`} onClick={()=>browserHistory.push(`/event/${this.props.id}`)}/>
+        <span className="title" style={titleStyle}>{this.props.children}</span>
       </div>
     )
   }
 }
-
-// <img className='btn' src={`'../../images/icon/${event.photo}`} key={index} style={btnStyle} onClick={()=>browserHistory.push(`/event/${event._id}`)}/>
 
 class EventList extends Component {
 
