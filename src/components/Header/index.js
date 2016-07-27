@@ -1,7 +1,7 @@
 require('./Header.scss');
 import React from 'react';
 import { browserHistory } from 'react-router';
-import cx from 'classnames';
+import cx from 'classname';
 
 class Header extends React.Component {
 	render() {
