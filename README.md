@@ -6,10 +6,6 @@ Structure
 ---
 The system is developed with ReactJS and other related technologies.
 
-Data Seeding
----
-mongoimport --db 100NYUTest --collection events --type csv --headerline --file EventData.csv
-
 Starting
 ---
 First install the node dependencies
@@ -19,12 +15,16 @@ First install the node dependencies
 ```
 
 Before running the client, make sure to have installed mongodb and seed the database
+
 ```
-mongoimport --db 100NYUTest --collection events --type csv --headerline --file EventData.csv
+	mongoimport --db 100NYUTest --collection events --type csv --headerline --file EventData.csv
 
-cd server/
+```
+For reseeding the database, drop the database first and then seed it again.
 
-node main.js
+```
+	mongo 100NYUTest --eval "db.dropDatabase()"
+
 ```
 
 To start the application

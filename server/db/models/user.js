@@ -50,7 +50,7 @@ const schema = new Schema({
 })
 
 schema.methods.sanitize = function() {
-    return _.omit(this.toJSON(), ['password', 'salt']);
+    return _.omit(this.toJSON(), ['password', 'salt','email']);
 };
 
 var generateSalt = function() {
@@ -79,12 +79,20 @@ schema.method('correctPassword', function(candidatePassword) {
     return encryptPassword(candidatePassword, this.salt) === this.password;
 });
 
+function IsInArray(array, element){
+	if(array.indexOf(element) > -1) return true;
+	return false;
+}
 
 schema.methods.saveEvent = function(eventInfo){
-	this.savedEvents.push(eventInfo._id);
-	return Event.findById(eventtInfo._id)
+	var eventId = eventInfo._id;
+	console.log(IsInArray(this.savedEvents, eventId))
+	if(IsInArray(this.savedEvents, eventId)) return this.save();
+	this.savedEvents.push(eventId);
+	return Event.findById(eventId)
 	.then(event => {
 		event.numberSaved++;
+		return event.save();
 	})
 	.then(() => {
 		return this.save();
@@ -93,10 +101,13 @@ schema.methods.saveEvent = function(eventInfo){
 }
 
 schema.methods.goToEvent = function(eventInfo){
-	this.eventsToGo.push(eventInfo._id);
-	return Event.findById(eventInfo._id)
+	var eventId = eventInfo._id;
+	if(IsInArray(this.eventsToGo, eventId)) return this.save();
+	this.eventsToGo.push(eventId);
+	return Event.findById(eventId)
 	.then(event => {
 		event.numberGoing++;
+		return event.save();
 	})
 	.then(() => {
 		return this.save();
