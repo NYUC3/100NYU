@@ -10,7 +10,8 @@ module.exports = function (app) {
   app.getValue = function (path) {
       return app.get(path);
   };
-
+  
+  require('./app-variables')(app);
   require('./parsing-middleware')(app);
-
+  require('./authentification')(app);
 };

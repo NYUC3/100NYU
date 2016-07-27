@@ -15,7 +15,7 @@ router.get('/', function (req, res, next) {
 router.param("userId", function(req, res, next, id) {
   mongoose.model('User')
   .findById(id)
-  .populate('school')
+  .populate('savedEvents eventsToGo school')
   .then(function(user){
     if(!user) throw new Error('not found');
     req.user = user;
@@ -24,14 +24,14 @@ router.param("userId", function(req, res, next, id) {
 })
 
 router.get('/:userId', function(req, res){
-  res.json(req.user);
+  res.json(req.user.sanitize());
 })
 
 router.post('/', function (req, res, next) {
   mongoose.model('User')
   .create(req.body)
   .then(function (user) {
-    res.status(201).json(user);
+    res.status(201).json(user.sanitize());
   })
   .then(null, next);
 });
