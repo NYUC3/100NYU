@@ -2,6 +2,7 @@ require('./App.scss')
 import React from 'react';
 import Header from '../../components/Header';
 import LeftNavigation from '../../components/LeftNavigation';
+let eventsUrl = 'http://localhost:1337/api/events';
 // import Footer from '../../components/Footer';
 
 class App extends React.Component {
