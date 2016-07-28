@@ -89,14 +89,17 @@ class App extends React.Component {
     }
     this.setState({layout});
   }
+
   render() {
   	let layout = this.state.layout;
+    let childrenWithProps = React.Children.map(this.props.children,(child)=>
+      React.cloneElement(child, {eventsData: this.state.events, styleData=})
+    );
     return (
       <div className='app'>
 				<Header style={layout.header} />
         <div className='MainPage' style={layout.mainPage}>
-        // <MainView style={layout.mainView} path={this.props.route.path}/>
-          <div className='MainView' style={layout.mainView} path={this.props.route.path}>
+          <div className='MainView' style={layout.mainView}>
             {this.props.children}
           </div>
         </div>
@@ -105,6 +108,8 @@ class App extends React.Component {
     );
   }
 }
+
+<EventList eventsData={this.state.events} styleData={style}/>
 
 App.defaultProps = {
 };

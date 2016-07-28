@@ -12,6 +12,7 @@ class Category extends React.Component {
       </div>
     );
   }
+  
 
 }
 

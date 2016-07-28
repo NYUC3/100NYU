@@ -10,9 +10,8 @@ import Event from './roots/Event'
 import Login from './roots/Login'
 import Signup from './roots/Signup'
 
-
 export default (
-  <Route path='/' component={Master} >
+  <Route component={Master}>
     <Route path='/' component={App}>
         <IndexRoute component={Home} />
         <Route path='/list' component={List} />
@@ -25,4 +24,5 @@ export default (
     <Redirect from='*' to='/' />
   </Route>
 );
+
 
