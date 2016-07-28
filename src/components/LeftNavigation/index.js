@@ -34,7 +34,13 @@ class LeftNavigation extends React.Component{
 								<img className={cx('btn','extend')} src={left_Trending} onClick={()=>browserHistory.push('/')}/>
 							</div>
 							<div className='btnContainer'>
-								<img className={cx('btn','extend')} src={left_NYU} onClick={()=>browserHistory.push('/nyu')}/>
+								<img className={cx('btn','extend')} src={left_Trending} onClick={()=>browserHistory.push('/list')}/>
+							</div>
+							<div className='btnContainer'>
+								<img className={cx('btn','extend')} src={left_Trending} onClick={()=>browserHistory.push('/category')}/>
+							</div>							
+							<div className='btnContainer'>
+								<img className={cx('btn','extend')} src={left_NYU} onClick={()=>browserHistory.push('/nyufeatured')}/>
 							</div>
 						</div>}
 				</div>

@@ -55,42 +55,11 @@ class EventList extends Component {
 class MainView extends Component{
   constructor(){
     super();
-    this.state={
-      events: []
-    }
-  }
-
-  getData(path){
-    const _this = this;
-    path = (path==undefined)?'':path
-    fetch(`${eventsUrl}${path}`,{
-      method: 'GET',
-      headers: {
-        'Content-Type': 'application/json'
-      },
-      mode: 'cors'
-    }).then(function(response) {
-      return response.json();
-    }).then(function(j) {
-      _this.setState({
-        events: j
-      })
-    });
-  }
-
-  componentWillMount(){
-    this.getData(this.props.path);
-  }
-  componentWillUpdate(){
-    this.getData(this.props.path);
   }
 
 	render(){
-		let style = this.props.style;
 		return(
-			<div className="MainView" style={style}>
         <EventList eventsData={this.state.events} styleData={style}/>
-			</div>
 		)
 	}
 

@@ -2,16 +2,40 @@ require('./App.scss')
 import React from 'react';
 import Header from '../../components/Header';
 import LeftNavigation from '../../components/LeftNavigation';
-import MainView from '../../components/MainView';
 // import Footer from '../../components/Footer';
 
 class App extends React.Component {
   constructor(){
-    super()
+    super();
+    this.state={
+      events: []
+    }
+  }
+
+  getData(path){
+    const _this = this;
+    path = (path==undefined)?'':path
+    fetch(`${eventsUrl}${path}`,{
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      mode: 'cors'
+    }).then(function(response) {
+      return response.json();
+    }).then(function(j) {
+      _this.setState({
+        events: j
+      })
+    });
   }
 
   componentWillMount() {
     this.computeLayout();
+    this.getData(this.props.path);
+  }
+  componentWillUpdate(){
+    this.getData(this.props.path);
   }
 
   componentDidMount(){
@@ -70,7 +94,10 @@ class App extends React.Component {
       <div className='app'>
 				<Header style={layout.header} />
         <div className='MainPage' style={layout.mainPage}>
-          <MainView style={layout.mainView} path={this.props.route.path}/>
+        // <MainView style={layout.mainView} path={this.props.route.path}/>
+          <div className='MainView' style={layout.mainView} path={this.props.route.path}>
+            {this.props.children}
+          </div>
         </div>
         <LeftNavigation style={layout.leftNavigation} />
       </div>
