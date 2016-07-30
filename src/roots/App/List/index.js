@@ -11,7 +11,7 @@ class List extends Component {
   render(){
     let eventNodes = this.props.eventsData.map(function(event, index){
       return(
-        <ListItem key={index} photo={event.photo} id={event.id} upvotes={event.upvotes} category={event.category}>
+        <ListItem key={index} photo={event.photo} id={event._id} upvotes={event.upvotes} category={event.category}>
           {event.title}
         </ListItem>
       );
@@ -47,7 +47,7 @@ class ListItem extends React.Component {
           </div>
           <div className="TitleAndButtons">
             <div className="EventTitle">
-              <span><Link to="/event/${this.props.id}">{this.props.children}</Link></span>
+              <span onClick={()=> browserHistory.push(`/event/${this.props.id}`)}>{this.props.children}</span>
             </div>
             <div className="ActionButtons">
                 <ActionButton className="CommentButton">Comment</ActionButton>
