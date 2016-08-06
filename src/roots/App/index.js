@@ -2,7 +2,7 @@ require('./App.scss')
 import React from 'react';
 import Header from '../../components/Header';
 import LeftNavigation from '../../components/LeftNavigation';
-let eventsUrl = 'http://localhost:1337/api/events';
+// let eventsUrl = 'http://localhost:1337/api/events';
 // import Footer from '../../components/Footer';
 
 class App extends React.Component {
@@ -13,30 +13,12 @@ class App extends React.Component {
     }
   }
 
-  getData(path){
-    const _this = this;
-    path = (path==undefined)?'':path
-    fetch(`${eventsUrl}${path}`,{
-      method: 'GET',
-      headers: {
-        'Content-Type': 'application/json'
-      },
-      mode: 'cors'
-    }).then(function(response) {
-      return response.json();
-    }).then(function(j) {
-      _this.setState({
-        events: j
-      })
-    });
-  }
-
   componentWillMount() {
     this.computeLayout();
-    this.getData(this.props.path);
+    // this.getData(this.props.path);
   }
   componentWillUpdate(){
-    this.getData(this.props.path);
+    // this.getData(this.props.path);
   }
 
   componentDidMount(){
@@ -93,7 +75,7 @@ class App extends React.Component {
   render() {
   	let layout = this.state.layout;
     let childrenWithProps = React.Children.map(this.props.children,(child)=>
-      React.cloneElement(child, {eventsData: this.state.events, styleData: layout.mainView})
+      React.cloneElement(child, {styleData: layout.mainView})
     );
     return (
       <div className='app'>

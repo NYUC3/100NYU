@@ -5,7 +5,7 @@ import App from './roots/App'
 import Home from './roots/App/Home'
 import List from './roots/App/List'
 import Category from './roots/App/Category'
-import NYUfeatured from './roots/App/NYUfeatured'
+import NYU from './roots/App/NYU'
 import Event from './roots/Event'
 import Login from './roots/Login'
 import Signup from './roots/Signup'
@@ -16,7 +16,7 @@ export default (
         <IndexRoute component={Home} />
         <Route path='/list' component={List} />
         <Route path='/category' component={Category} />
-        <Route path='/nyufeatured' component={NYUfeatured} />
+        <Route path='/nyu' component={NYU} />
     </Route>
     <Route path='/event/:eventId' component={Event} />
     <Route path='/login' component={Login} />

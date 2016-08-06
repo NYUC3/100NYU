@@ -1,15 +1,38 @@
 require('./List.scss');
 import React, {Component} from 'react';
 import { browserHistory } from 'react-router';
-import { Link } from 'react-router'
+let eventsUrl = 'http://localhost:1337/api/events';
+
+// import { Link } from 'react-router'
 
 class List extends Component {
+  getData(path){
+    let _this = this
+    fetch(`${eventsUrl}${path}`,{
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      mode: 'cors'
+    }).then(function(response) {
+      return response.json();
+    }).then(function(j) {
+      _this.setState({events: j})
+    });
+  }
+
   constructor(){
     super()
+    let path = ''
+    this.state = {
+      events: []
+    }
+    this.getData(path)
   }
 
   render(){
-    let eventNodes = this.props.eventsData.map(function(event, index){
+    let eventsData = this.state.events
+    let eventNodes = eventsData.map(function(event, index){
       return(
         <ListItem key={index} photo={event.photo} id={event._id} upvotes={event.upvotes} category={event.category}>
           {event.title}
@@ -28,15 +51,15 @@ class List extends Component {
   //       height: 10
   //   });
   // }
-};
+}
 
 
 class ListItem extends React.Component {
   render(){
     let thumbnailStyle = this.props.style;
-    let getEventDetail = function(){
-      browserHistory.push(`/event/${this.props.id}`);
-    };
+    // let getEventDetail = function(){
+    //   browserHistory.push(`/event/${this.props.id}`);
+    // };
     return (
       <li className="ListItem">
           <div className="EventThumbnail">
@@ -59,7 +82,7 @@ class ListItem extends React.Component {
       </li>
     );
   }
-};
+}
 
 class ActionButton extends React.Component {
   render(){
@@ -71,6 +94,6 @@ class ActionButton extends React.Component {
         </button>
     );
   }
-};
+}
 
 export default List;

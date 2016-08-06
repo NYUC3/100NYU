@@ -5,7 +5,7 @@ import { browserHistory } from 'react-router';
 let left_100NYU = '../../images/left/100_NYU.png';
 let left_All = '../../images/left/All.png';
 let left_List = '../../images/left/List.png';
-let left_Trending = '../../images/left/Trending.png';
+// let left_Trending = '../../images/left/Trending.png';
 let left_NYU = '../../images/left/NYU.png';
 
 class LeftNavigation extends React.Component{
@@ -37,10 +37,7 @@ class LeftNavigation extends React.Component{
 								<img className={cx('btn','extend')} src={left_List} onClick={()=>browserHistory.push('/list')}/>
 							</div>
 							<div className='btnContainer'>
-								<img className={cx('btn','extend')} src={left_Trending} onClick={()=>browserHistory.push('/category')}/>
-							</div>							
-							<div className='btnContainer'>
-								<img className={cx('btn','extend')} src={left_NYU} onClick={()=>browserHistory.push('/nyufeatured')}/>
+								<img className={cx('btn','extend')} src={left_NYU} onClick={()=>browserHistory.push('/nyu')}/>
 							</div>
 						</div>
 					}

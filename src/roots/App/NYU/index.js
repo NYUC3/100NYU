@@ -1,4 +1,4 @@
-require('./Home.scss');
+require('./NYU.scss');
 import { browserHistory } from 'react-router';
 import React, {Component}from 'react';
 let eventsUrl = 'http://localhost:1337/api/events';
@@ -24,8 +24,9 @@ class Event extends Component {
   }
 }
 
-class Home extends Component {
+class NYU extends Component {
   getData(path){
+    console.log(path)
     let _this = this
     fetch(`${eventsUrl}${path}`,{
       method: 'GET',
@@ -41,12 +42,16 @@ class Home extends Component {
   }
   constructor(props){
     super(props)
-    let path = ''
     this.state = {
       events: []
     }
-    this.getData(path)
+    
   }
+
+  componentWillMount(){
+    this.getData(this.props.route.path);
+  }
+  
 
   render(){
     let btnStyle = {
@@ -76,4 +81,4 @@ class Home extends Component {
 }
 
 
-export default Home;
+export default NYU;

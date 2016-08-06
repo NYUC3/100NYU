@@ -12,7 +12,7 @@ router.get('/', function (req, res, next) {
   .then(null, next);
 });
 
-router.param("userId", function(req, res, next, id) {
+router.param('userId', function(req, res, next, id) {
   mongoose.model('User')
   .findById(id)
   .populate('savedEvents eventsToGo school')
