@@ -1,0 +1,40 @@
+.ListItem {
+	list-style-type: none;
+	height: 100px;
+	margin-left: 50px;
+
+	.EventThumbnail, .VoteButton, .TitleAndButtons {
+		display: inline-block;
+		vertical-align: middle;
+		margin-right: 10px;
+
+	}
+
+	.EventThumbnail{
+		height: 100px;
+	}
+
+	.EventThumbnail > img {
+		height: 80px;
+		width: 80px;
+	}
+
+	.VoteButton {
+		height: 20px;
+		width: 60px;
+	}
+
+	.TitleAndButtons > .EventTitle{
+		width: 350px;
+	}
+
+	.TitleAndButtons > .ActionButtons > .ActionButton{
+		height: 20px;
+		width: 60px;
+		margin-right: 5px;
+	}
+
+	.ActionButtons > .Tags {
+		font-size: 10px;
+	}
+}

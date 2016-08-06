@@ -2,16 +2,23 @@ require('./App.scss')
 import React from 'react';
 import Header from '../../components/Header';
 import LeftNavigation from '../../components/LeftNavigation';
-import MainView from '../../components/MainView';
+// let eventsUrl = 'http://localhost:1337/api/events';
 // import Footer from '../../components/Footer';
 
 class App extends React.Component {
   constructor(){
-    super()
+    super();
+    this.state={
+      events: []
+    }
   }
 
   componentWillMount() {
     this.computeLayout();
+    // this.getData(this.props.path);
+  }
+  componentWillUpdate(){
+    // this.getData(this.props.path);
   }
 
   componentDidMount(){
@@ -64,13 +71,19 @@ class App extends React.Component {
     }
     this.setState({layout});
   }
+
   render() {
   	let layout = this.state.layout;
+    let childrenWithProps = React.Children.map(this.props.children,(child)=>
+      React.cloneElement(child, {styleData: layout.mainView})
+    );
     return (
       <div className='app'>
 				<Header style={layout.header} />
         <div className='MainPage' style={layout.mainPage}>
-          <MainView style={layout.mainView} path={this.props.route.path}/>
+          <div className='MainView' style={layout.mainView}>
+            {childrenWithProps}
+          </div>
         </div>
         <LeftNavigation style={layout.leftNavigation} />
       </div>

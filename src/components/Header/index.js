@@ -14,7 +14,7 @@ class Header extends React.Component {
 					</div>
 					<div className="Login">
 					  <span className='Link' onClick={()=>browserHistory.push('/login')}>Log in</span>
-				 	  <span className={cx('Link', 'Highlight')}>Sign up</span>
+				 	  <span className={cx('Link', 'Highlight')} onClick={()=>browserHistory.push('/signup')}>Sign up</span>
 				 	</div>
 			 	</div>
 			</div>

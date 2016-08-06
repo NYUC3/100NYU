@@ -1,0 +1,52 @@
+$white: #FFFFFF;
+$purple: #AA4A9B;
+$black: #000000;
+$primary: #F7F7F7;
+$secondary: #797979;
+$bars: #D9DCDE;
+$tertiary: #F2B45F;
+$text: #61dafb;
+$text-secondary: #797979;
+
+
+$font: Helvetica;
+$font-size: 11px;
+$font-small: 10px;
+$font-big: 13px;
+
+.Home {
+	.event {
+		display: inline-block;
+		cursor: pointer;
+		position: relative;
+	}
+	.event > .eventImg{
+		width: 80px;
+		height: 80px;
+		opacity: 0.85;
+		transform-origin: center center;
+        -webkit-transition: -moz-transform .5s; 
+        -moz-transition: -webkit-transform .5s; 
+        transition: transform .3s;
+	}
+	.event > .title{
+        color: white;
+        display: none;
+        font-size: 12px;
+        font-family: "Courier New", Courier, monospace;
+        white-space: nowrap;
+        padding: 1px 3px;
+        position: absolute;
+        left: 0;
+        top: 70%;
+        background: rgb(0, 0, 0);
+        background: rgba(0, 0, 0, 0.7);
+	}
+	.event:hover > img {
+        transform: scale(1.3);
+      }
+
+    .event:hover > .title {
+        display: inline;
+      }
+}

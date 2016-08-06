@@ -12,7 +12,7 @@ router.get('/', function (req, res, next) {
   .then(null, next);
 });
 
-router.param("userId", function(req, res, next, id) {
+router.param('userId', function(req, res, next, id) {
   mongoose.model('User')
   .findById(id)
   .populate('savedEvents eventsToGo school')
@@ -27,9 +27,21 @@ router.get('/:userId', function(req, res){
   res.json(req.user.sanitize());
 })
 
+//
 router.post('/', function (req, res, next) {
   mongoose.model('User')
-  .create(req.body)
+  .findOne({
+    email: req.body.email
+  })
+  .then((user) => {
+    if(user) {
+      const err = new Error('User already exists!');
+      err.status = 403
+      return next(err);
+    } else {
+      return mongoose.model('User').create(req.body)
+    }
+  })
   .then(function (user) {
     res.status(201).json(user.sanitize());
   })

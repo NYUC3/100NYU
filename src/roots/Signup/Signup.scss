@@ -1,0 +1,48 @@
+@import '../../components/variables.scss';
+
+.signup {
+    background-color: $white;
+    position: fixed;
+    left: 0px;
+    top: 0px;
+    bottom: 0px;
+    right: 0px;
+    font-family: 'Montserrat', sans-serif;
+    .signup-main-window {
+        background-color: $white;
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        width: 300px;
+        padding: 100px 50px 150px 50px;
+        height: 300px;
+        transform: translate(-50%,-50%);
+        .signup-logo {
+            text-align: center;
+            font-size: 28px;
+            font-weight: bold;
+            color: $purple;
+            padding: 0px 50px 50px 50px;
+        }
+        .signup-button {
+            text-align: right;
+        }
+        .signup-input {
+            padding: 0px 10px 0px 0px;
+            margin-bottom: 20px;
+            border-radius:7px;
+            background-color: $primary;
+            :focus{
+                outline:none;
+                border-color:$purple;
+                box-shadow:0 0 10px $purple;
+            };
+        }
+        
+        .signup-error {
+            text-align: right;
+            margin-top: 5px;
+        }
+    }
+    
+}
