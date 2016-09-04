@@ -79,6 +79,7 @@
     "classname": "0.0.0",
     "core-js": "^2.0.0",
     "express": "^4.14.0",
+    "keymirror": "^0.1.1",
     "lodash": "^4.13.1",
     "normalize.css": "^4.0.0",
     "react": "^15.2.1",
@@ -86,7 +87,7 @@
     "react-dom": "^15.0.0",
     "react-router": "^2.5.1",
     "react-tap-event-plugin": "^1.0.0",
-    "superagent": "^2.1.0",
+    "superagent": "^2.2.0",
     "webpack-dev-middleware": "^1.6.1"
   }
 }
