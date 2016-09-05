@@ -7,6 +7,7 @@ export default {
 		AuthAPI
 		.UserLogin(email, password)
 		.then(user => {
+			user = user.user;
 			AppDispatcher.dispatch({
 				actionType: AuthConstants.LOGIN_USER,
 				userId: user._id,

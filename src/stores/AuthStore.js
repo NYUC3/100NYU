@@ -32,11 +32,11 @@ class AuthStoreClass extends EventEmitter {
 const AuthStore = new AuthStoreClass();
 
 function setUser(userId, first, last){
-	if(!localStorage.getItem('userId')){
+	// if(!localStorage.getItem('userId')){
 		localStorage.setItem('userId', userId);
 		localStorage.setItem('first', first);
 		localStorage.setItem('last', last);
-	}
+	// }
 }
 
 function removeUser(){

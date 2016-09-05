@@ -37,6 +37,9 @@
                 border-color:$purple;
                 box-shadow:0 0 10px $purple;
             };
+            input {
+                width: 100%;
+            }
         }
         .login-signup {
             text-align: center;
@@ -60,3 +63,5 @@
     }
     
 }
+
+
