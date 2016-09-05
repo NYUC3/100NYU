@@ -16,11 +16,11 @@ export default {
 		})
 		.catch(message => {
 			AppDispatcher.dispatch({
-				actionTypes: AuthConstants.LOGIN_USER_ERROR
+				actionTypes: AuthConstants.LOGIN_USER_ERROR,
 				message: message
 			})
 		})
-	}
+	},
 
 	logUserOut: () => {
 		AuthAPI
