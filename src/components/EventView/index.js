@@ -30,7 +30,8 @@ class EventView extends Component{
 	render(){
 		let style = this.props.style;
 		let {detail} = this.state;
-		console.log(detail)
+		detail.photo = detail.photo == undefined ? '../../images/eventCover/event.png' : '../../images/eventCover/'+ detail.photo
+		console.log(detail.photo)
 		let layout = {
 			'EventDetail': {
 				height: style.fullHeight-180,
@@ -57,7 +58,7 @@ class EventView extends Component{
 			<div className='EventViewContainer' style={style}>
 				<div className={cx('EventDetail', 'frame')} style={layout.EventDetail}>
 					<div className={cx('EventPreview', 'frame')} style={layout.EventPreview}>
-						<img src={event} width={layout.EventPreview.width}/>
+						<img src={detail.photo} width={layout.EventPreview.width}/>
 						<text className='EventRank'>#{detail.ranking+1}</text>
 						<text className='EventGo'>{detail.numberGoing} going</text>
 						<text className='EventView'>{detail.numberViewed} Viewed</text>
