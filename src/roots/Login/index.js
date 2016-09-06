@@ -31,8 +31,6 @@ class Login extends Component{
   login(){
     AuthActions.logUserIn(this.state.email, this.state.password);
     this.setState({authenticated: true});
-    // redirect to home page
-    browserHistory.push('/');
   }
 
 	render(){

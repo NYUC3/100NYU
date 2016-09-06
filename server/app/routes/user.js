@@ -29,6 +29,7 @@ router.get('/:userId', function(req, res){
 
 //
 router.post('/', function (req, res, next) {
+  console.log("req.body", req.body)
   mongoose.model('User')
   .findOne({
     email: req.body.email

@@ -31,5 +31,21 @@ export default {
 				actionType: AuthConstants.LOGOUT_USER
 			});		
 		})
+	},
+
+	signUserUp: (email, password) => {
+		AuthAPI
+		.UserSignup(email, password)
+		.then(user => {
+			AppDispatcher.dispatch({
+				actionType: AuthConstants.SIGNUP_USER
+			})
+		})
+		.catch(message => {
+			AppDispatcher.dispatch({
+				actionTypes: AuthConstants.SIGNUP_USER_ERROR,
+				message: message
+			})
+		})
 	}
 }

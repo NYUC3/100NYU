@@ -1,6 +1,7 @@
 import AppDispatcher from '../dispatcher/AppDispatcher';
 import AuthConstants from '../constants/AuthConstants';
 import { EventEmitter } from 'events';
+import { browserHistory } from 'react-router';
 
 const CHANGE_EVENT = 'change';
 
@@ -50,11 +51,24 @@ AuthStore.dispatchUserinfo = AppDispatcher.register(action => {
 		case AuthConstants.LOGIN_USER:
 			setUser(action.userId, action.first, action.last);
 			AuthStore.emitChange();
+			browserHistory.push('/');
+			break
+
+		case AuthConstants.LOGIN_USER_ERROR:
+			alert("Invalid credentials. Please log in again");
 			break
 
 		case AuthConstants.LOGOUT_USER:
 			removeUser();
 			AuthStore.emitChange();
+			break
+
+		case AuthConstants.SIGNUP_USER:
+			browserHistory.push('/login');
+			break
+
+		case AuthConstants.SIGNUP_USER_ERROR:
+			alert("Signup Error");
 			break
 	}
 })

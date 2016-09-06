@@ -9,7 +9,8 @@ class Header extends React.Component {
 	constructor(){
 		super();
 		this.state = {
-			authenticated: AuthStore.isAuthenticated()
+			authenticated: AuthStore.isAuthenticated(),
+			userId: AuthStore.getUserId()
 		}
 		this.logout = this.logout.bind(this);
 		this.onChange = this.onChange.bind(this);
@@ -25,13 +26,14 @@ class Header extends React.Component {
 
 	onChange(){
 		this.setState({
-			authenticated: AuthStore.isAuthenticated()
+			authenticated: AuthStore.isAuthenticated(),
+			userId: AuthStore.getUserId()
 		})
 	}
 
     logout(){
       AuthActions.logUserOut();
-      this.setState({authenticated: false});
+      this.setState({authenticated: false, userId: null});
     }
 
 	render() {
@@ -46,10 +48,10 @@ class Header extends React.Component {
 					{!this.state.authenticated ? (
 						<span className='Link' onClick={()=>browserHistory.push('/login')}>Log in</span>
 					):(
-						<span className='Link'>Welcome!</span>
+						<span className='Link' onClick={()=>browserHistory.push(`/profile/${this.state.userId}`)}>Welcome!</span>
 					)}  
 					{!this.state.authenticated ? (
-						<span className={cx('Link', 'Highlight')} onClick={()=>browserHistory.push('/signup')}>Sign up</span>
+						<span className='Link' onClick={()=>browserHistory.push('/signup')}>Sign up</span>
 					):(
 						<span className={cx('Link', 'Highlight')} onClick={this.logout}>Log out</span>
 					)}

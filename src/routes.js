@@ -7,6 +7,7 @@ import List from './roots/App/List'
 import Category from './roots/App/Category'
 import NYU from './roots/App/NYU'
 import Event from './roots/Event'
+import Profile from './roots/Profile'
 import Login from './roots/Login'
 import Signup from './roots/Signup'
 
@@ -19,6 +20,7 @@ export default (
         <Route path='/nyu' component={NYU} />
     </Route>
     <Route path='/event/:eventId' component={Event} />
+    <Route path='/profile/:userId' component={Profile} />
     <Route path='/login' component={Login} />
     <Route path='/signup' component={Signup} />
     <Redirect from='*' to='/' />
