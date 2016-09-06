@@ -1,12 +1,15 @@
+require('./Profile.scss')
 import React from 'react';
 import Header from '../../components/Header';
-import LeftNavigation from '../../components/LeftNavigation';
-import EventView from '../../components/EventView';
+import AuthStore from '../../stores/AuthStore'
 // import Footer from '../../components/Footer';
 
 class ProfilePage extends React.Component {
   constructor(){
     super()
+    this.state = {
+      username: AuthStore.getUserName()
+    }
   }
 
   componentWillMount() {
@@ -33,28 +36,11 @@ class ProfilePage extends React.Component {
         width,
         height: HeaderHeight
       },
-      leftNavigation: {
-        position: 'fixed',
-        top: HeaderHeight,
-        left: 0,
-        width: LeftNavigationWidth,
-        height: height-HeaderHeight
-      },
       mainPage: {
         position: 'fixed',
         top: HeaderHeight,
-        left: 0,
         width: width,
         height: height-HeaderHeight
-      },
-      mainView: {
-        marginTop:margin+30,
-        marginLeft: 100,
-        top: HeaderHeight,
-        left: 0,
-        width: width-160,
-        fullHeight: height-HeaderHeight-30,
-        Maxheight: height-HeaderHeight-30
       },
       footer: {
         left:0,
@@ -70,9 +56,13 @@ class ProfilePage extends React.Component {
       <div className='app'>
         <Header style={layout.header} />
         <div className='MainPage' style={layout.mainPage}>
-          <h3>profile</h3>
+          <div className="username">{this.state.username}</div>
+          <div className="eventCategories">
+            <div>Upcoming Events</div>
+            <div>Saved Events</div>
+            <div>Past Events</div>
+          </div>  
         </div>
-        <LeftNavigation style={layout.leftNavigation} />
       </div>
     );
   }
