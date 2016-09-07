@@ -19,6 +19,8 @@ Before running the client, make sure to have installed mongodb and seed the data
 ```
 	mongoimport --db 100NYUTest --collection events --type csv --headerline --file EventData.csv
 
+    mongoimport --db 100NYUTest --collection users --type csv --headerline --file UserData.csv
+
 ```
 For reseeding the database, drop the database first and then seed it again.
 
