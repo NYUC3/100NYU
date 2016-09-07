@@ -1,15 +1,23 @@
 require('./EventView.scss');
 import React, {Component} from 'react';
 import cx from 'className';
+import AuthStore from '../../stores/AuthStore'
+import UserActions from '../../actions/UserActions'
+
 let eventUrl = 'http://localhost:1337/api/events/';
 let event = '../../images/eventCover/event.png'
 let emojis = ['../../images/emoji/music.png', '../../images/emoji/night.png', '../../images/emoji/outdoor.png']
+
 class EventView extends Component{
 	constructor(){
 		super();
 		this.state={
-			detail: {}
+			detail: {},
+			userId: AuthStore.getUserId()
 		}
+		this.goToEvent = this.goToEvent.bind(this);
+		this.saveEvent = this.saveEvent.bind(this);
+		this.shareEvent = this.shareEvent.bind(this);
 	}
 	componentWillMount(){
 		const _this = this;
@@ -22,11 +30,25 @@ class EventView extends Component{
     }).then(function(response) {
       return response.json();
     }).then(function(j) {
+    	console.log('j', j)
       _this.setState({
         detail: j
       })
     });
 	}
+
+	goToEvent(){
+		UserActions.goToEvent(this.state.userId,this.props.id);
+	}
+
+	saveEvent(){
+		UserActions.saveEvent(this.state.userId, this.props.id);
+	}
+
+	shareEvent(){
+
+	}
+
 	render(){
 		let style = this.props.style;
 		let {detail} = this.state;
@@ -101,9 +123,9 @@ class EventView extends Component{
 						</div>
 						
 						<div className='Activity'>
-							<img className="activity" key="Check" src='../../images/Check.png'/>
-							<img className="activity" key="Love" src='../../images/Love.png'/>
-							<img className="activity" key="Share" src='../../images/Share.png'/>
+							<img className="activity" key="Check" src='../../images/Check.png' onClick={this.goToEvent}/>
+							<img className="activity" key="Love" src='../../images/Love.png' onClick={this.saveEvent}/>
+							<img className="activity" key="Share" src='../../images/Share.png' onClick={this.shareEvent}/>
 						</div>
 					</div>
 				</div>
