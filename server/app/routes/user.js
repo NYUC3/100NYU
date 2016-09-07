@@ -5,9 +5,12 @@ module.exports = router;
 
 router.get('/', function (req, res, next) {
   mongoose.model('User')
-  .find(req.query)
+  .find({})
   .then(function (users) {
-    res.json(users);
+    var sanitizedUsers = users.map(user => {
+      return user.sanitize();
+    })
+    res.json(sanitizedUsers);
   })
   .then(null, next);
 });
@@ -15,7 +18,8 @@ router.get('/', function (req, res, next) {
 router.param('userId', function(req, res, next, id) {
   mongoose.model('User')
   .findById(id)
-  .populate('savedEvents eventsToGo school')
+  .populate({ path: 'savedEvents', model: 'Event' })
+  .populate({ path: 'eventsToGo', model: 'Event' })
   .then(function(user){
     if(!user) throw new Error('not found');
     req.user = user;
@@ -49,15 +53,18 @@ router.post('/', function (req, res, next) {
 });
 
 router.post('/:userId/save', function(req, res, next) {
+  console.log('saveEvent route')
   req.user
   .saveEvent(req.body)
   .then(function(updatedUser){
+    console.log('user after save', updatedUser)
     res.status(204).send('saved');
   })
   .then(null, next);
 })
 
 router.post('/:userId/go', function(req, res, next) {
+  console.log('goToEvent route')
   req.user
   .goToEvent(req.body)
   .then(function(updatedUser){

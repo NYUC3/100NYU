@@ -86,32 +86,33 @@ function IsInArray(array, element){
 
 schema.methods.saveEvent = function(eventInfo){
 	var eventId = eventInfo._id;
-	console.log(IsInArray(this.savedEvents, eventId))
-	if(IsInArray(this.savedEvents, eventId)) return this.save();
-	this.savedEvents.push(eventId);
+	var self = this;
+	// check if the event has been saved before or not
+	// if(IsInArray(this.savedEvents, eventId)) return self.save();
 	return Event.findById(eventId)
-	.then(event => {
-		event.numberSaved++;
-		return event.save();
-	})
-	.then(() => {
-		return this.save();
-	})
-	
+		.then(event => {
+			event.numberGoing++;
+			return event.save();
+		})
+		.then((event) => {
+			return self.model('User').update({'_id': self._id}, {$addToSet:{'savedEvents': event._id}})
+		})
 }
 
 schema.methods.goToEvent = function(eventInfo){
 	var eventId = eventInfo._id;
-	if(IsInArray(this.eventsToGo, eventId)) return this.save();
-	this.eventsToGo.push(eventId);
+	var self = this;
+    // check if the event has been saved before or not
+	// if(IsInArray(this.eventsToGo, eventId)) return self.save();
 	return Event.findById(eventId)
 	.then(event => {
 		event.numberGoing++;
 		return event.save();
 	})
-	.then(() => {
-		return this.save();
+	.then((event) => {
+		return self.model('User').update({'_id':self._id}, {$addToSet:{'eventsToGo': event._id}});
 	})
 }
+
 
 module.exports = mongoose.model('User', schema);

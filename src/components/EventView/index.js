@@ -1,37 +1,75 @@
 require('./EventView.scss');
 import React, {Component} from 'react';
 import cx from 'className';
+import AuthStore from '../../stores/AuthStore'
+import UserActions from '../../actions/UserActions'
+import { browserHistory } from 'react-router';
+
 let eventUrl = 'http://localhost:1337/api/events/';
 let event = '../../images/eventCover/event.png'
 let emojis = ['../../images/emoji/music.png', '../../images/emoji/night.png', '../../images/emoji/outdoor.png']
+
 class EventView extends Component{
 	constructor(){
 		super();
 		this.state={
-			detail: {}
+			detail: {},
+			userId: AuthStore.getUserId(),
+			authenticated: AuthStore.isAuthenticated()
 		}
+		this.goToEvent = this.goToEvent.bind(this);
+		this.saveEvent = this.saveEvent.bind(this);
+		this.shareEvent = this.shareEvent.bind(this);
+		this.onChange = this.onChange.bind(this);
 	}
 	componentWillMount(){
 		const _this = this;
-    fetch(`${eventUrl}${this.props.id}`,{
-      method: 'GET',
-      headers: {
-        'Content-Type': 'application/json'
-      },
-      mode: 'cors'
-    }).then(function(response) {
-      return response.json();
-    }).then(function(j) {
-      _this.setState({
-        detail: j
-      })
-    });
+	    fetch(`${eventUrl}${this.props.id}`,{
+	      method: 'GET',
+	      headers: {
+	        'Content-Type': 'application/json'
+	      },
+	      mode: 'cors'
+	    }).then(function(response) {
+	      return response.json();
+	    }).then(function(j) {
+	      _this.setState({
+	        detail: j
+	      })
+	    });
+
+	    AuthStore.addChangeListener(this.onChange);
 	}
+
+	componentWillUnmount(){
+		AuthStore.removeChangeListener(this.onChange);
+	}
+
+	onChange(){
+		this.setState({
+			authenticated: AuthStore.isAuthenticated(),
+			userId: AuthStore.getUserId()
+		})
+	}
+
+	goToEvent(){
+		if(this.state.authenticated) UserActions.goToEvent(this.state.userId,this.props.id);
+		else browserHistory.push('/login');
+	}
+
+	saveEvent(){
+		if(this.state.authenticated) UserActions.saveEvent(this.state.userId, this.props.id);
+		else browserHistory.push('/login');
+	}
+
+	shareEvent(){
+
+	}
+
 	render(){
 		let style = this.props.style;
 		let {detail} = this.state;
 		detail.photo = detail.photo == undefined ? '../../images/eventCover/event.png' : '../../images/eventCover/'+ detail.photo
-		console.log(detail.photo)
 		let layout = {
 			'EventDetail': {
 				height: style.fullHeight-180,
@@ -101,9 +139,9 @@ class EventView extends Component{
 						</div>
 						
 						<div className='Activity'>
-							<img className="activity" key="Check" src='../../images/Check.png'/>
-							<img className="activity" key="Love" src='../../images/Love.png'/>
-							<img className="activity" key="Share" src='../../images/Share.png'/>
+							<img className="activity" key="Check" src='../../images/Check.png' onClick={this.goToEvent}/>
+							<img className="activity" key="Love" src='../../images/Love.png' onClick={this.saveEvent}/>
+							<img className="activity" key="Share" src='../../images/Share.png' onClick={this.shareEvent}/>
 						</div>
 					</div>
 				</div>
