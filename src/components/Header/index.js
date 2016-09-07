@@ -10,7 +10,8 @@ class Header extends React.Component {
 		super();
 		this.state = {
 			authenticated: AuthStore.isAuthenticated(),
-			userId: AuthStore.getUserId()
+			userId: AuthStore.getUserId(),
+			userFirstName: AuthStore.getUserFirstName()
 		}
 		this.logout = this.logout.bind(this);
 		this.onChange = this.onChange.bind(this);
@@ -27,7 +28,8 @@ class Header extends React.Component {
 	onChange(){
 		this.setState({
 			authenticated: AuthStore.isAuthenticated(),
-			userId: AuthStore.getUserId()
+			userId: AuthStore.getUserId(),
+			userFirstName: AuthStore.getUserFirstName()
 		})
 	}
 
@@ -48,7 +50,7 @@ class Header extends React.Component {
 					{!this.state.authenticated ? (
 						<span className='Link' onClick={()=>browserHistory.push('/login')}>Log in</span>
 					):(
-						<span className='Link' onClick={()=>browserHistory.push(`/profile/${this.state.userId}`)}>Welcome!</span>
+						<span className='Link' onClick={()=>browserHistory.push(`/profile/${this.state.userId}`)}>Welcome, {this.state.userFirstName}!</span>
 					)}  
 					{!this.state.authenticated ? (
 						<span className='Link' onClick={()=>browserHistory.push('/signup')}>Sign up</span>

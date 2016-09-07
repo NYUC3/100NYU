@@ -3,6 +3,7 @@ import React, {Component} from 'react';
 import cx from 'className';
 import AuthStore from '../../stores/AuthStore'
 import UserActions from '../../actions/UserActions'
+import { browserHistory } from 'react-router';
 
 let eventUrl = 'http://localhost:1337/api/events/';
 let event = '../../images/eventCover/event.png'
@@ -13,35 +14,52 @@ class EventView extends Component{
 		super();
 		this.state={
 			detail: {},
-			userId: AuthStore.getUserId()
+			userId: AuthStore.getUserId(),
+			authenticated: AuthStore.isAuthenticated()
 		}
 		this.goToEvent = this.goToEvent.bind(this);
 		this.saveEvent = this.saveEvent.bind(this);
 		this.shareEvent = this.shareEvent.bind(this);
+		this.onChange = this.onChange.bind(this);
 	}
 	componentWillMount(){
 		const _this = this;
-    fetch(`${eventUrl}${this.props.id}`,{
-      method: 'GET',
-      headers: {
-        'Content-Type': 'application/json'
-      },
-      mode: 'cors'
-    }).then(function(response) {
-      return response.json();
-    }).then(function(j) {
-      _this.setState({
-        detail: j
-      })
-    });
+	    fetch(`${eventUrl}${this.props.id}`,{
+	      method: 'GET',
+	      headers: {
+	        'Content-Type': 'application/json'
+	      },
+	      mode: 'cors'
+	    }).then(function(response) {
+	      return response.json();
+	    }).then(function(j) {
+	      _this.setState({
+	        detail: j
+	      })
+	    });
+
+	    AuthStore.addChangeListener(this.onChange);
+	}
+
+	componentWillUnmount(){
+		AuthStore.removeChangeListener(this.onChange);
+	}
+
+	onChange(){
+		this.setState({
+			authenticated: AuthStore.isAuthenticated(),
+			userId: AuthStore.getUserId()
+		})
 	}
 
 	goToEvent(){
-		UserActions.goToEvent(this.state.userId,this.props.id);
+		if(this.state.authenticated) UserActions.goToEvent(this.state.userId,this.props.id);
+		else browserHistory.push('/login');
 	}
 
 	saveEvent(){
-		UserActions.saveEvent(this.state.userId, this.props.id);
+		if(this.state.authenticated) UserActions.saveEvent(this.state.userId, this.props.id);
+		else browserHistory.push('/login');
 	}
 
 	shareEvent(){

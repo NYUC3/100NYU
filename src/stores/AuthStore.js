@@ -29,8 +29,11 @@ class AuthStoreClass extends EventEmitter {
 		return localStorage.getItem('userId');
 	}
 
+	getUserFirstName(){
+		return localStorage.getItem('first');
+	}
+
 	getUserName(){
-		console.log(localStorage.getItem('first'));
 		return localStorage.getItem('first') + localStorage.getItem('last')
 	}
 }

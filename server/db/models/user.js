@@ -88,16 +88,14 @@ schema.methods.saveEvent = function(eventInfo){
 	var eventId = eventInfo._id;
 	var self = this;
 	// check if the event has been saved before or not
-	if(IsInArray(this.savedEvents, eventId)) return self.save();
-	else 
+	// if(IsInArray(this.savedEvents, eventId)) return self.save();
 	return Event.findById(eventId)
 		.then(event => {
 			event.numberGoing++;
 			return event.save();
 		})
-		.then(() => {
-			self.savedEvents.push(eventId);
-			return self.save();
+		.then((event) => {
+			return self.model('User').update({'_id': self._id}, {$addToSet:{'savedEvents': event._id}})
 		})
 }
 
@@ -105,15 +103,14 @@ schema.methods.goToEvent = function(eventInfo){
 	var eventId = eventInfo._id;
 	var self = this;
     // check if the event has been saved before or not
-	if(IsInArray(this.eventsToGo, eventId)) return self.save();
-	else return Event.findById(eventId)
+	// if(IsInArray(this.eventsToGo, eventId)) return self.save();
+	return Event.findById(eventId)
 	.then(event => {
 		event.numberGoing++;
 		return event.save();
 	})
-	.then(() => {
-		self.eventsToGo.push(eventId);
-		return self.save();
+	.then((event) => {
+		return self.model('User').update({'_id':self._id}, {$addToSet:{'eventsToGo': event._id}});
 	})
 }
 
