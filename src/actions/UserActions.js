@@ -22,5 +22,18 @@ export default {
 			console.log(message);
 		})
 
+	},
+	getUserInfo: (userId) => {
+		UserAPI.
+		getUserInfo(userId)
+		.then(user => {
+			console.log('user');
+			AppDispatcher.dispatch({
+				actionType: getInfo
+			})
+		})
+		.catch(message => {
+			console.log(message);
+		})
 	}
 }
