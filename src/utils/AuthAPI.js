@@ -15,7 +15,7 @@ export default {
 	UserLogout: () => {
 	    return new Promise((resolve, reject) => {
 	      request
-	        .get("http://localhost:1337/logout")
+	        .get('http://localhost:1337/logout')
 	        .end((err, response) => {
 	          if (err) reject(err);
 	          resolve();
@@ -25,7 +25,7 @@ export default {
 	UserSignup: (email, password) => {
 		return new Promise((resolve, reject) => {
 			request
-			.post("http://localhost:1337/api/users")
+			.post('http://localhost:1337/api/users')
 			.send({email: email, password: password})
 			.end((err, response) => {
 				if(err) reject(err);

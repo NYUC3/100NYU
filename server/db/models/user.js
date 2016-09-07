@@ -86,32 +86,36 @@ function IsInArray(array, element){
 
 schema.methods.saveEvent = function(eventInfo){
 	var eventId = eventInfo._id;
-	console.log(IsInArray(this.savedEvents, eventId))
-	if(IsInArray(this.savedEvents, eventId)) return this.save();
-	this.savedEvents.push(eventId);
+	var self = this;
+	// check if the event has been saved before or not
+	if(IsInArray(this.savedEvents, eventId)) return self.save();
+	else 
 	return Event.findById(eventId)
-	.then(event => {
-		event.numberSaved++;
-		return event.save();
-	})
-	.then(() => {
-		return this.save();
-	})
-	
+		.then(event => {
+			event.numberGoing++;
+			return event.save();
+		})
+		.then(() => {
+			self.savedEvents.push(eventId);
+			return self.save();
+		})
 }
 
 schema.methods.goToEvent = function(eventInfo){
 	var eventId = eventInfo._id;
-	if(IsInArray(this.eventsToGo, eventId)) return this.save();
-	this.eventsToGo.push(eventId);
-	return Event.findById(eventId)
+	var self = this;
+    // check if the event has been saved before or not
+	if(IsInArray(this.eventsToGo, eventId)) return self.save();
+	else return Event.findById(eventId)
 	.then(event => {
 		event.numberGoing++;
 		return event.save();
 	})
 	.then(() => {
-		return this.save();
+		self.eventsToGo.push(eventId);
+		return self.save();
 	})
 }
+
 
 module.exports = mongoose.model('User', schema);

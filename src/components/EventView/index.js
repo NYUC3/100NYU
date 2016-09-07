@@ -30,7 +30,6 @@ class EventView extends Component{
     }).then(function(response) {
       return response.json();
     }).then(function(j) {
-    	console.log('j', j)
       _this.setState({
         detail: j
       })
@@ -53,7 +52,6 @@ class EventView extends Component{
 		let style = this.props.style;
 		let {detail} = this.state;
 		detail.photo = detail.photo == undefined ? '../../images/eventCover/event.png' : '../../images/eventCover/'+ detail.photo
-		console.log(detail.photo)
 		let layout = {
 			'EventDetail': {
 				height: style.fullHeight-180,

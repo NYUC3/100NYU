@@ -73,7 +73,7 @@ AuthStore.dispatchUserinfo = AppDispatcher.register(action => {
 			break
 
 		case AuthConstants.SIGNUP_USER_ERROR:
-			alert("Signup Error");
+			alert('Signup Error');
 			break
 	}
 })
